@@ -1,0 +1,137 @@
+---
+title: "pantheon_popularity_index"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+install.packages("caret", repos = "http://cran.us.r-project.org")
+```
+R.version.string
+```{r setup, include=FALSE}
+install.packages("caret")
+install.packages("plotly")
+install.packages("tidytext")
+install.packages("threejs")
+install.packages("tweenr")
+install.packages("gganimate")
+```
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, error=F, warning=F)
+library(tidyverse) # CSV file I/O, e.g. the read_csv function
+library(RColorBrewer)
+library(plotly) 
+#library(ggimage)
+#date
+library(lubridate)
+#machinelearning
+library(caret)
+#text
+library(tidytext)
+#3d
+library(threejs)
+#animate
+library(tweenr)
+library(gganimate)
+
+```
+
+```{r set up}
+
+#theme
+my_theme <- function(base_size = 12, base_family = "Helvetica"){
+    theme_minimal() +
+    theme(axis.title.y = element_blank(),axis.title.x = element_blank(),
+    plot.title = element_text(face="bold", size=16),
+    axis.text.y = element_blank(),
+    axis.text.x = element_blank(),
+    panel.grid = element_blank(),
+    plot.background = element_rect(fill = 'ghostwhite',color='white')
+    )
+}
+```
+## Load data
+
+```{r input}
+pantheon_popularity_index <- read.csv("C:\\Users\\Rachel Le\\OneDrive - iPrice Group\\pantheon_popularity\\pantheon_database.csv", stringsAsFactors=FALSE)
+
+pantheon_i30 <- pantheon_popularity_index %>%
+  filter(city %in% c('Rome', 'Paris', 'New York', 'Los Angeles', 'London', 'Tokyo'),
+         article_languages>=30) %>%
+  mutate(birth_year = (birth_year))
+```
+print(head(pantheon_i30,5))
+
+```{r input}
+
+ pantheon_i30 %>%
+  ggplot()  +
+  #historical_popularity_index/20
+  geom_segment(aes(y = 0, 
+                   x = birth_year, 
+                   yend = article_languages, 
+                   xend =  birth_year),
+                   color = "lightgrey", size=0.5) +
+  
+  #use marginal border to different gender
+  geom_point(aes(x=birth_year, 
+             y=article_languages, 
+             size=historical_popularity_index/20 +0.4),
+            
+             col="white",inherit.aes = FALSE)  +             
+  geom_point(aes(x=birth_year, 
+             y=article_languages, 
+             col=domain, 
+             size=historical_popularity_index/20),
+             alpha=0.85, inherit.aes = FALSE) +  ylim(-10,120) + 
+  coord_polar() + facet_grid(.~city,switch="both") + 
+  #geom_text(aes(label = city), x = 0, y = 0, hjust = 0.5, vjust = 2, size=4.5, fontface = "plain",family = "Poppins") +
+  annotate("text", x = 0, y = 0, hjust = 0.5, vjust = 1.5, label="Global", size=6, fontface = "plain",family = "Cinzel",inherit.aes = FALSE) +
+  theme_void() + 
+  my_theme() +
+  #geom_text(data=pantheon_i50_rome, aes(x = 0, y = -18, label=city), colour = "black", alpha=0.8, size=4, fontface="bold", inherit.aes = FALSE) +
+  scale_color_manual(values=c("#f7347a", "#ffdfba","#7408bb", "#bae1ff", "#800000", "#ffb3ba","#ffa500"))
+
+
+# dev.off()  
+  ```
+
+
+```{r input}
+pantheon_i30_rome <- pantheon_i30 %>%
+  filter(city %in% c('Rome')) %>%
+  arrange(desc(historical_popularity_index)) 
+
+# tiff("Rome.tiff", width = 5, height = 5, units = 'in', res = 500)
+ pantheon_i30_rome %>%
+  ggplot()  +
+  #historical_popularity_index/20
+  geom_segment(aes(y = 0, 
+                   x = birth_year, 
+                   yend = article_languages, 
+                   xend =  birth_year),
+                   color = "lightgrey", size=0.5) +
+  
+  #use marginal border to different gender
+  geom_point(aes(x=birth_year, 
+             y=article_languages, 
+             size=historical_popularity_index/20 +0.4),
+            
+             col="white",inherit.aes = FALSE)  +             
+  geom_point(aes(x=birth_year, 
+             y=article_languages, 
+             col=domain, 
+             size=historical_popularity_index/20),
+             alpha=0.85, inherit.aes = FALSE) +  ylim(-10,120) + 
+  coord_polar() + facet_grid(.~city,switch="both") + 
+  #geom_text(aes(label = city), x = 0, y = 0, hjust = 0.5, vjust = 2, size=4.5, fontface = "plain",family = "Poppins") +
+  annotate("text", x = 0, y = 0, hjust = 0.5, vjust = 1.5, label="Rome", size=6, fontface = "plain",family = "Cinzel",inherit.aes = FALSE) +
+  theme_void() + 
+  my_theme() +
+  #geom_text(data=pantheon_i50_rome, aes(x = 0, y = -18, label=city), colour = "black", alpha=0.8, size=4, fontface="bold", inherit.aes = FALSE) +
+  scale_color_manual(values=c("#f7347a", "#ffdfba","#7408bb", "#bae1ff", "#800000", "#ffb3ba","#ffa500"))
+
+
+# dev.off()  
+  ```
+
