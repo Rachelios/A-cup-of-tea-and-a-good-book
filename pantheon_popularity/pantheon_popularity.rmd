@@ -53,7 +53,7 @@ my_theme <- function(base_size = 12, base_family = "Helvetica"){
 ## Load data
 
 ```{r input}
-pantheon_popularity_index <- read.csv("C:\\Users\\Rachel Le\\OneDrive - iPrice Group\\pantheon_popularity\\pantheon_database.csv", stringsAsFactors=FALSE)
+pantheon_popularity_index <- read.csv("https://raw.githubusercontent.com/Rachelios/A-cup-of-tea-and-a-good-book/master/pantheon_popularity/pantheon_database.csv", stringsAsFactors=FALSE)
 
 pantheon_i30 <- pantheon_popularity_index %>%
   filter(city %in% c('Rome', 'Paris', 'New York', 'Los Angeles', 'London', 'Tokyo'),
