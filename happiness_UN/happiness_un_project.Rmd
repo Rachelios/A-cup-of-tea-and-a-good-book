@@ -1,0 +1,300 @@
+---
+title: "happiness"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+install.packages("reshape2")
+install.packages("gridExtra")
+install.packages("ggraph")
+install.packages("formattable")
+install.packages("extrafont")
+
+```
+
+```{r setup, include=FALSE}
+library(formattable)
+library(gridExtra)
+library(dplyr)
+library(tidyr)
+library(reshape2)
+library(ggplot2)
+library(ggraph)
+library(plotly)
+library(readr)
+library(extrafont)
+```
+
+```{r read}
+# test
+df <- read_csv("C:\\Users\\Rachel Le\\Downloads\\opendata_viz-master\\happiness\\2016.csv")
+colnames(df)[c(4, 7:12)] <- c('happiness','economy','family','health','freedom','trust','generosity')
+#df$happiness_band <- cut(df$`Happiness Score`, breaks=c()
+```
+
+```{r read}
+df1 <- read_csv("C:\\Users\\Rachel Le\\Downloads\\opendata_viz-master\\happiness\\2019.csv")
+colnames(df1)[c(1:9)] <- c('rank','country', 'happiness','economy','social','health','freedom','generosity','corruption/gov_trust')
+#df$happiness_band <- cut(df$`Happiness Score`, breaks=c()
+```
+```{r read}
+library(countrycode)
+df1$code = countrycode(df1$country, 'country.name', 'iso3c')
+#could convert to country/region/continent
+df1$continent = countrycode(df1$country, 'country.name', 'continent')
+df1$region = countrycode(df1$country, 'country.name', 'region')
+#remove N/A 
+df1 <- na.omit(df1) 
+```
+
+R.version.string
+
+print(head(df1,5))
+
+```{r}
+# Bar chart example
+library(dplyr)
+continent <- df1 %>% group_by(continent) %>% summarise(country_count = n())
+
+p <- ggplot(continent, aes(x=continent, y=country_count, fill = continent)) +
+ geom_bar(stat="identity")
+# Default plotting
+p + scale_fill_manual(values=c("#ffb3ba", "#babfff","#f7347a", "#ffa500", "#800000", "#ffb3ba","#ffa500")) +
+theme(legend.position = 'bottom', legend.key.size = unit(1, 'cm'))
+   ```
+
+```{r}
+library(scales)
+box <- ggplot(df1, aes(x = region, y = happiness, color = region)) +
+  geom_boxplot() + 
+  geom_jitter(aes(color=country), size = 0.5) +
+  ggtitle("Happiness Score for Regions and Countries") + 
+  coord_flip() + 
+  theme(legend.position="none")
+ggplotly(box)
+```
+
+```{r}
+num_hap <- df1[, c("rank", "happiness", "economy", "social", "health", "freedom", "generosity", "corruption/gov_trust")]
+
+library(corrplot)
+m <- cor(num_hap, use="pairwise.complete.obs") #creating correlation matrix
+
+corrplot(m, method="circle", type='upper', tl.cex=0.8, tl.col = 'black')
+```
+
+print(head(df1,5))
+```{r}
+library(ggplot2)
+p_gdp  <- plot_ly(df1, x = ~economy, y = ~happiness, text = ~country, 
+type = 'scatter', mode = 'markers', size = ~happiness, color = ~country, colors = 'Paired',
+        sizes = c(10, 50),
+        marker = list(opacity = 0.5, sizemode = 'diameter'))
+
+p_gdp <- p_gdp  %>% layout(title = 'Gender Gap in Earnings per University',
+         xaxis = list(showgrid = TRUE
+                      ),
+         yaxis = list(showgrid = TRUE),
+         showlegend = FALSE)
+
+
+print(p_gdp)
+```
+```{r set up}
+
+#theme
+my_theme <- function(base_size = 12, base_family = "Helvetica"){
+    theme_minimal() +
+    theme(axis.title.y = element_blank(),axis.title.x = element_blank(),
+    plot.title = element_text(face="bold", size=16),
+    axis.text.y = element_blank(),
+    axis.text.x = element_blank(),
+    panel.grid = element_blank(),
+    plot.background = element_rect(fill = 'ghostwhite',color='white'),
+    legend.position = 'None', legend.title = element_blank()
+    )
+    
+}
+```
+```{r}
+library(ggplot2)
+
+df1 %>%
+  ggplot()  +
+  geom_point(aes(x=economy, 
+             y=happiness, 
+             size=happiness,
+             colour = factor(df1$continent),
+            alpha=0.85))+
+  scale_size_continuous(range = c(2, 15))  +
+   scale_color_manual(values=c("#ffb3ba", "#babfff","#f7347a", "#ffa500", "#800000", "#ffb3ba","#ffa500")) +
+   geom_vline(xintercept= max(df1$economy)/2, colour = "#f7347a", linetype = "longdash") + 
+   geom_hline(yintercept= 5, colour = "#f7347a", linetype = "longdash") +
+   my_theme() +
+  annotate("text", x = 0.05, y = 5.1, family = "Helvetica", size = 2.7, color = "gray20",
+           label = glue::glue("Lower GPD per capita ")) +
+  annotate("text", x = 1.6, y = 5.1, family = "Helvetica", size = 2.7, color = "gray20",
+           label = "Higher GDP per capita") +
+  annotate("text", x = 0.75, y = 2.7, family = "Helvetica", size = 2.7, color = "gray20",
+           label = glue::glue("Lower happiness")) +
+  annotate("text", x = 0.75, y = 8, family = "Helvetica", size = 2.7, color = "gray20",
+           label = "Higher Happiness") +
+  annotate("text", x = 0.3, y = 2.75, family = "Helvetica", size = 4.0, color = "#f7347a",
+           label = "South Sudan") +
+  annotate("text", x = 1.37, y = 8, family = "Helvetica", size = 4.0, color = "#f7347a",
+           label = "Finland")
+
+  # labs(x = NULL, y = "Happiness ladder") +
+
+
+```
+```{r}
+# Bar chart example
+library(dplyr)
+continent <- df1 %>% group_by(continent) %>% summarise(country_count = n())
+
+p <- ggplot(continent, aes(x=continent, y=country_count, fill = continent)) +
+ geom_bar(stat="identity")
+# Default plotting
+p + scale_fill_manual(values=c("#ffb3ba", "#babfff","#f7347a", "#ffa500", "#800000", "#ffb3ba","#ffa500")) +
+theme(legend.position = 'bottom')
+   ```
+
+
+
+```{r}
+#Global Happiness Plot
+
+df_melt <- df1 %>%
+  melt(id.vars = c("country", "happiness"), measure.vars = c("economy",'social','health','freedom','generosity','corruption/gov_trust')) 
+
+df_melt %>%  ggplot(aes(x=variable, y=value, fill=country)) + 
+ geom_bar(stat = "identity", position="dodge",alpha=0.6) + 
+ coord_polar() + 
+ theme_minimal() +
+ scale_y_continuous(limits = c(0, 1.2)) +
+ theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+       axis.title.y=element_blank(),axis.title.x=element_blank(), 
+          axis.text.y=element_blank() ,
+          legend.position = 'None', legend.title = element_blank()
+       )  
+```
+
+
+```{r split}
+out <- split( df1 , f = df1$continent)
+
+```
+
+print(head(out,5))
+
+```{r}
+#to print ggplot in loop, one must use print()
+
+
+df_europe <- filter(df1, continent=="Europe") %>%
+  melt(id.vars = c("country", "happiness"), measure.vars = c("economy",'social','health','freedom','generosity','corruption/gov_trust')) 
+ 
+print(df_europe %>% ggplot(aes(x=variable, y=value, fill=country)) + 
+ geom_bar(stat = "identity", position="dodge",alpha=0.6) + 
+ coord_polar() + 
+ theme_minimal() +
+ scale_y_continuous(limits = c(0, 1.2)) +
+ theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+       axis.title.y=element_blank(),axis.title.x=element_blank(), 
+          axis.text.y=element_blank() 
+          
+       ) )
+
+#jpeg(paste0("happy",i))
+#dev.off()
+```
+
+
+```{r}
+#to print ggplot in loop, one must use print()
+#Asia
+
+df_asia <- filter(df1, continent=="Asia") %>%
+  melt(id.vars = c("country", "happiness"), measure.vars = c("economy",'social','health','freedom','generosity','corruption/gov_trust')) 
+ 
+print(df_asia %>% ggplot(aes(x=variable, y=value, fill=country)) + 
+ geom_bar(stat = "identity", position="dodge",alpha=0.6) + 
+ coord_polar() + 
+ theme_minimal() +
+ scale_y_continuous(limits = c(0, 1.2)) +
+ theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+       axis.title.y=element_blank(),axis.title.x=element_blank(), 
+          axis.text.y=element_blank() 
+          
+       ) )
+
+#jpeg(paste0("happy",i))
+#dev.off()
+```
+
+
+```{r}
+#to print ggplot in loop, one must use print()
+#Americas
+
+df_americas <- filter(df1, continent=="Americas") %>%
+  melt(id.vars = c("country", "happiness"), measure.vars = c("economy",'social','health','freedom','generosity','corruption/gov_trust')) 
+ 
+print(df_americas %>% ggplot(aes(x=variable, y=value, fill=country)) + 
+ geom_bar(stat = "identity", position="dodge",alpha=0.6) + 
+ coord_polar() + 
+ theme_minimal() +
+ scale_y_continuous(limits = c(0, 1.2)) +
+ theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+       axis.title.y=element_blank(),axis.title.x=element_blank(), 
+          axis.text.y=element_blank() 
+          
+       ) )
+
+#jpeg(paste0("happy",i))
+#dev.off()
+```
+```{r}
+#to print ggplot in loop, one must use print()
+#Americas
+
+df_africa <- filter(df1, continent=="Africa") %>%
+  melt(id.vars = c("country", "happiness"), measure.vars = c("economy",'social','health','freedom','generosity','corruption/gov_trust')) 
+ 
+print(df_africa %>% ggplot(aes(x=variable, y=value, fill=country)) + 
+ geom_bar(stat = "identity", position="dodge",alpha=0.6) + 
+ coord_polar() + 
+ theme_minimal() +
+ scale_y_continuous(limits = c(0, 1.2)) +
+ theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+       axis.title.y=element_blank(),axis.title.x=element_blank(), 
+          axis.text.y=element_blank() 
+          
+       ) )
+
+#jpeg(paste0("happy",i))
+#dev.off()
+```
+
+```{r}
+#to print ggplot in loop, one must use print()
+#Americas
+
+df_oceania <- filter(df1, continent=="Oceania") %>%
+  melt(id.vars = c("country", "happiness"), measure.vars = c("economy",'social','health','freedom','generosity','corruption/gov_trust')) 
+ 
+print(df_oceania %>% ggplot(aes(x=variable, y=value, fill=country)) + 
+ geom_bar(stat = "identity", position="dodge",alpha=0.6) + 
+ coord_polar() + 
+ theme_minimal() +
+ scale_y_continuous(limits = c(0, 1.2)) +
+ theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+       axis.title.y=element_blank(),axis.title.x=element_blank(), 
+          axis.text.y=element_blank() 
+          
+       ) )
+
+#jpeg(paste0("happy",i))
+#dev.off()
+```

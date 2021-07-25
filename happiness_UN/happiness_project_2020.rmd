@@ -1,0 +1,80 @@
+---
+title: "happiness"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+install.packages("reshape2")
+install.packages("gridExtra")
+install.packages("ggraph")
+install.packages("formattable")
+```
+
+```{r setup, include=FALSE}
+library(formattable)
+library(gridExtra)
+library(dplyr)
+library(tidyr)
+library(reshape2)
+library(ggplot2)
+library(ggraph)
+library(plotly)
+library(readr)
+```
+
+
+
+```{r read}
+df <- read_csv("C:\\Users\\Rachel Le\\Downloads\\opendata_viz-master\\happiness\\2021.csv")
+colnames(df)[c(1, 3:9)] <- c('country', 'happiness','economy','social','health','freedom','generosity','corruption/gov_trust')
+df$economy = df$economy /10
+df$health = df$health / 100
+data.2020 <- df %>% filter(year == "2020") %>% 
+            arrange(`happiness`) 
+#df$happiness_band <- cut(df$`Happiness Score`, breaks=c()
+```
+print(head(data.2020,5))
+```{r read}
+library(countrycode)
+data.2020$code = countrycode(data.2020$country, 'country.name', 'iso3c')
+#could convert to country/region/continent
+data.2020$continent = countrycode(data.2020$country, 'country.name', 'continent')
+data.2020$region = countrycode(data.2020$country, 'country.name', 'region')
+```
+
+
+```{r}
+#Global Happiness Plot
+
+df_melt <- data.2020 %>%
+  melt(id.vars = c("country", "happiness"), measure.vars = c("economy",'social','health','freedom','generosity','corruption/gov_trust')) 
+
+df_melt %>%  ggplot(aes(x=variable, y=value, fill=country)) + 
+ geom_bar(stat = "identity", position="dodge",alpha=0.6) + 
+ coord_polar() + 
+ theme_minimal() +
+ scale_y_continuous(limits = c(0, 1.2)) +
+ theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+       axis.title.y=element_blank(),axis.title.x=element_blank(), 
+          axis.text.y=element_blank() ,
+          legend.position = 'None', legend.title = element_blank()
+       )  
+```
+```{r}
+#Global Happiness Plot
+library(RColorBrewer)
+df_melt <- data.2020 %>%
+  melt(id.vars = c("country", "happiness"), measure.vars = c("economy",'social','health','freedom','generosity','corruption/gov_trust')) 
+
+df_melt %>%  ggplot(aes(x=variable, y=value, fill=country)) + 
+ geom_bar(stat = "identity", position="dodge",alpha=0.6) + 
+  coord_polar() + 
+ theme_minimal() +
+ scale_y_continuous(limits = c(0, 1.2)) +
+ #scale_fill_brewer(palette = "Set3") +
+ theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+       axis.title.y=element_blank(),axis.title.x=element_blank(), 
+          axis.text.y=element_blank() ,
+          legend.position = 'None', legend.title = element_blank()
+       )  
+```
