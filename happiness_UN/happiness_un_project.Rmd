@@ -33,7 +33,7 @@ colnames(df)[c(4, 7:12)] <- c('happiness','economy','family','health','freedom',
 ```
 
 ```{r read}
-df1 <- read_csv("C:\\Users\\Rachel Le\\Downloads\\opendata_viz-master\\happiness\\2019.csv")
+df1 <- read.csv("https://raw.githubusercontent.com/Rachelios/A-cup-of-tea-and-a-good-book/master/happiness_UN/2019.csv", stringsAsFactors=FALSE)
 colnames(df1)[c(1:9)] <- c('rank','country', 'happiness','economy','social','health','freedom','generosity','corruption/gov_trust')
 #df$happiness_band <- cut(df$`Happiness Score`, breaks=c()
 ```
@@ -257,7 +257,7 @@ print(df_americas %>% ggplot(aes(x=variable, y=value, fill=country)) +
 ```
 ```{r}
 #to print ggplot in loop, one must use print()
-#Americas
+#Africa
 
 df_africa <- filter(df1, continent=="Africa") %>%
   melt(id.vars = c("country", "happiness"), measure.vars = c("economy",'social','health','freedom','generosity','corruption/gov_trust')) 
