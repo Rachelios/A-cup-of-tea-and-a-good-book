@@ -179,7 +179,7 @@ pantheon_i30_london<- pantheon_i30 %>%
 library(dplyr)
 pantheon_i30_london_count <- pantheon_i30_london %>% group_by(domain) %>% summarise(count = n())
 
-p <- ggplot(antheon_i30_london_count, aes(x=domain, y=count, fill = domain)) +
+p <- ggplot(pantheon_i30_london_count, aes(x=domain, y=count, fill = domain)) +
  geom_bar(stat="identity")
 # Default plotting
 p + scale_fill_manual(values=c("#f7347a", "#ffdfba","#7408bb", "#ffb3ba", "#800000", "#baffc9","#ffa500", "#3b5998")) +
