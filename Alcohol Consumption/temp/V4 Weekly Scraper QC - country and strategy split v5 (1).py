@@ -11,7 +11,7 @@ import pandas as pd
 from pandas import json_normalize
 from elasticsearch import Elasticsearch
 
-es = Elasticsearch('https://iprice:Iprice_21@search-iprice-production-elk-kzrsnpvgbuatlkgeitidaiqgti.ap-southeast-1.es.amazonaws.com:443')
+es = Elasticsearch('')
 
 date_query = {
   "query": {
