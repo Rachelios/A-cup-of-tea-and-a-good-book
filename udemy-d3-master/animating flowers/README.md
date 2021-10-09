@@ -1,0 +1,1 @@
+A little experiment to see if animating >500 SVG path elements really puts us in the "middle of screwed-up country" as Dominikus Baur puts it in his [excellent write-up about the OECD Better Life Index HTML5 implementation](http://do.minik.us/blog/oecd-bli-tech).

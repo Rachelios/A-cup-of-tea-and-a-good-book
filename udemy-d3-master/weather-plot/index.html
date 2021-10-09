@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+
+    <style>
+     body{
+        background-color: whitesmoke;
+     }
+
+     .freeze {
+        fill: #A8DFE4;
+     }
+
+     .rain {
+        fill: #209CD3;
+     }
+
+     .clear {
+      fill: white
+     }
+
+     .scattered {
+      fill: lightgray;
+     }
+
+     .cloudy {
+      fill: gray;
+     }
+
+     .overcast {
+      fill: darkgray;
+     }
+
+
+     svg {
+        background-color: white;
+        font-family: 'Lato';
+     }
+
+     .axis {
+        stroke: white;
+        opacity: .8;
+     }
+
+     text.title {
+        font-size: 26px;
+     }
+
+     text.months, text.temp {
+      text-anchor: middle;
+      font-size: 12px;
+      fill: #39837B;
+     }
+
+     circle.axis {
+        stroke: white;
+        stroke-width: 1px;
+        fill: none;
+     }
+
+     circle.axis.record {
+        stroke: #bae0d6;
+        stroke-width: 1.2px;
+        opacity: 1;
+     }
+
+     line.record, line.avg, line.yearLow, line.yearHigh{
+      stroke-width: 2px;
+     }
+
+     line.record {
+        stroke: #bae0d6;
+     }
+
+     line.avg {
+        stroke: #3FA39E;
+        opacity: .5;
+     }
+
+     line.year {
+       stroke: #006358;
+
+     }
+
+     line.yearLow, line.yearHigh{
+        stroke: #F97F5A;
+     }
+
+     .avg {
+        stroke: #3FA39E;
+        fill: #3FA39E;
+     }
+
+     .record {
+        stroke: #bae0d6;
+        fill: #bae0d6;
+        .opacity: .5;
+     }
+
+     .year {
+        stroke: #F97F5A;
+        fill: #F97F5A;
+     }
+     .beyond {
+        stroke: #445E5B;
+        fill: #445E5B;
+     }
+
+
+    </style>
+</head>
+<body>
+    <svg width=960 height=500></svg>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.3.0/d3-legend.min.js"></script>
+
+    <script>
+    var width = 960,
+    margin = 20,
+    height = 500,
+    svg = d3.select('svg'),
+    origin = svg.append('g')
+        .attr('transform', 'translate(' + width*3/5 + ',' + height/2 + ')'),
+    rScale = d3.scale.linear()
+        .domain([-10, 110])
+        .range([0, height/2 - margin]),
+    yScale = (day, temp) => -Math.cos(angleScale(day)*Math.PI/180)*rScale(parseInt(temp)),
+    xScale = (day, temp) => Math.sin(angleScale(day)*Math.PI/180)*rScale(parseInt(temp)),
+    angleScale = d3.scale.linear()
+        .range([0, 360]);
+
+    var drawRadial = function(chart, cl, data, low, high){
+      chart.selectAll('line.' + cl)
+        .data(data)
+        .enter().append('line')
+        .attr('x1', (d) => xScale(d.index, d[low]))
+        .attr('x2', (d) => xScale(d.index, d[high]))
+        .attr('y1', (d) => yScale(d.index, d[low]))
+        .attr('y2', (d) => yScale(d.index, d[high]))
+        .attr('class', cl);
+    };
+
+    d3.json('ny.json', function(err, json){
+
+        angleScale.domain([0, json.values.length - 1]);
+
+        var min = d3.min(json.values, d => parseInt(d.recLow)),
+        max = d3.max(json.values, d => parseInt(d.recHigh));
+
+        var months = [];
+        //find index for months based on data
+        json.values.forEach((d, i) => {
+            var month = d.date.split('-')[1],
+            prevDaysMonth = ( i === 0 ) ? undefined : json.values[i - 1].date.split('-')[1];
+            if (i === 0 || month != prevDaysMonth){
+                months.push({
+                    month: month,
+                    index: i
+                });
+            }
+        })
+
+        //circle axis
+        origin.selectAll('circle.axis-green')
+            .data([40, 60, 80, 100])
+            .enter().append('circle')
+            .attr('r', (d) => rScale(d))
+            .attr('class', 'axis record')
+
+        //record low and high
+        drawRadial(origin, 'record', json.values, 'recLow', 'recHigh')
+
+        //avg low and high
+        drawRadial(origin, 'avg', json.values, 'avgLow', 'avgHigh')
+
+        //this year's temperature
+        var thisYear = json.values.filter( d => d.min );
+
+        drawRadial(origin, 'year', thisYear, 'min', 'max')
+
+        var lowLower = json.values.filter( d => d.min && parseInt(d.min) < parseInt(d.avgLow));
+        drawRadial(origin, 'yearLow', lowLower, 'min', 'avgLow')
+
+        var highHigher = json.values.filter( d => d.min && parseInt(d.max) > parseInt(d.avgHigh));
+        drawRadial(origin, 'yearHigh', highHigher, 'max', 'avgHigh')
+
+        var circleAxis = [0, 32, 60, 80, 100]
+        circleAxis = circleAxis.map( (d) => {return {temp: d, index: 320}})
+
+        //temperature axis
+        origin.selectAll('circle.axis-white')
+            .data(circleAxis)
+            .enter().append('circle')
+            .attr('r', (d) => rScale(d.temp))
+            .attr('class', 'axis')
+
+        //temperature axis labels
+        origin.selectAll('text.temp')
+            .data(circleAxis)
+            .enter().append('text')
+            .attr('x', d => {
+              return xScale(d.index, d.temp)})
+            .attr('y', d => yScale(d.index, d.temp))
+            .text(d => d.temp + '°')
+            .attr('class', 'temp');
+
+        //axis lines
+        var axis = origin.append('g');
+
+        axis.selectAll('line.axis')
+          .data(months)
+          .enter().append('line')
+          .attr('x2', d => {
+            return xScale(d.index, 120)})
+          .attr('y2', d => -yScale(d.index, 120))
+          .attr('class', 'axis');
+
+        var monthLabels = months.filter( (d,i) => i%3 === 0)
+        //month labels
+        axis.selectAll('text.months')
+          .data(monthLabels)
+          .enter().append('text')
+          .attr('x', d => {
+            return xScale(d.index, 110)})
+          .attr('y', d => yScale(d.index, 110))
+          .text(d => d.month)
+          .attr('class', 'months');
+
+        //center for reference
+        axis.append('circle')
+            .attr('r', 3)
+            .attr('class', 'avg')
+
+        //title
+        svg.append('text')
+            .attr('x', 30)
+            .attr('y', 60)
+            .text(json.name)
+            .attr('class', 'title')
+
+        //subtitle
+        svg.append('text')
+            .attr('x', 30)
+            .attr('y', 100)
+            .text('Historical Weather Data')
+
+        //create legend
+        var legendScale = d3.scale.ordinal()
+            .domain(['Record', 'Average', 'This Year - within avg', 'This Year - beyond avg', ])
+            .range(['record', 'avg', 'beyond', 'year'])
+
+        //d3-legend
+        var legend = d3.legend.color()
+            .shapePadding(5)
+            .useClass(true)
+            .scale(legendScale);
+
+        svg.append('g')
+            .attr('transform', 'translate(30,120)')
+            .call(legend);
+
+        d3.json("cloud_rain_freeze.json", loadBars);
+
+
+    });
+
+function loadBars(data) {
+  var freezeBars = [];
+  var rainBars = [];
+  var cloudBars = [];
+  var freeze = {};
+  var cloud = {start: data[0].date, category: data[0].cloud};
+  var rain = {};
+
+  data.forEach(function (d, i) {
+    console.log (cloud.category, d.cloud)
+    if (d.cloud !== cloud.category) {
+      cloud.end = d.date;
+      cloudBars.push(cloud);
+      cloud = {start: d.date, category: d.cloud};
+    }
+
+    if (freeze.start && !d.freeze) {
+      freeze.end = d.date;
+      freezeBars.push(freeze);
+      freeze = {};
+    }
+    else if (d.freeze && !freeze.start) {
+      freeze.start = d.date;
+    }
+    if (rain.start && !d.rain) {
+      rain.end = d.date;
+      rainBars.push(rain);
+      rain = {};
+    }
+    else if (d.rain && !rain.start) {
+      rain.start = d.date;
+    }
+
+  });
+
+  drawBars(rainBars, "rain", 205);
+  drawBars(freezeBars, "freeze", 200);
+  drawBars(cloudBars, "freeze", 210);
+}
+
+function drawBars(data, type, offset) {
+
+  dateScale = d3.time.scale()
+  .domain([new Date("01/01/2015"), new Date("12/31/2015")])
+  .range([0,(2 * Math.PI)]);
+
+  var arc = d3.svg.arc().innerRadius(offset).outerRadius(offset + 5);
+
+  d3.select("svg").append("g")
+  .attr("class", type + "bars")
+  .attr("transform", "translate(576,250)")
+  .selectAll("path")
+  .data(data)
+  .enter()
+  .append("path")
+  .attr("d", drawArc)
+  .attr("class", function (d) {return type + " " + d.category})
+
+  function drawArc(d) {
+    projected = {startAngle: dateScale(new Date(d.start)), endAngle: dateScale(new Date(d.end)) };
+    return arc(projected);
+  }
+}
+
+
+    </script>
+</body>
+</html>

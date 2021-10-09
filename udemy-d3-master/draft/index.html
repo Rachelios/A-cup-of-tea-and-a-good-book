@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.y.axis line {
+  stroke: #777;
+  stroke-dasharray: 2,2;
+}
+
+</style>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script>
+
+var margin = {top: 20, right: 20, bottom: 20, left: 10},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var parseDate = d3.time.format("%m-%d-%Y").parse;
+
+var x = d3.time.scale()
+    .range([0, width - 50]);
+
+var y = d3.scale.sqrt()
+    .range([height, 0]);
+
+var r = d3.scale.sqrt()
+    .range([5, 30]);
+
+var color = d3.scale.quantile()
+    .range(["#fd8d3c","#fc4e2a","#e31a1c","#bd0026"]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .tickSize(6, 0)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .tickSize(30, 0)
+    .orient("left");
+
+var diag = d3.svg.diagonal()
+    .source(function(d) { return {x: x(d.start),y: y(0)}; })
+    .target(function(d) { return {x: x(d.end),y: y(d.duration)}; });
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv("data.csv", function(error, data) {
+  if (error) throw error;
+
+  data.forEach(function(d) {
+    d.start = parseDate(d.start);
+    d.end = parseDate(d.end);
+    d.duration = (d.end - d.start)/(1000*24*60*60*31*12);
+    d.batDeath = +d.batDeath;
+  });
+
+  data.sort(function(a,b) { return b.batDeath - a.batDeath; });
+  
+  x.domain([d3.min(data, function(d) { return d.start; }),d3.max(data, function(d) { return d.end; })]);
+  y.domain([0,d3.max(data, function(d) { return d.duration; })]);
+  r.domain(d3.extent(data, function(d) { return d.batDeath; }));
+  color.domain(d3.extent(data, function(d) { return d.batDeath; }));
+
+  var war = svg.selectAll(".war")
+    .data(data)
+  .enter().append("g")
+    .attr("class","war");
+
+  war.append("path")
+      .attr("class","curves")
+      .attr("d", diag)
+      .attr("fill","none")
+      .attr("stroke-width",1)
+      .attr("stroke",function(d) { return color(d.batDeath); });
+  
+  war.append("circle")
+      .attr("class","circle")
+      .attr("r", function(d) { return r(d.batDeath); })
+      .attr("cx",function(d) { return x(d.end)})
+      .attr("cy",function(d) { return y(d.duration)})
+      .attr("fill",function(d) { return color(d.batDeath)})
+      .attr("stroke","white")
+      .attr("stroke-width",1.5);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .attr("transform", "translate(" + width + ",0)")
+      .call(yAxis)
+    .append("text")
+      .attr("x", 0)
+      .attr("y", 10)
+      .attr("transform", "rotate(-90)")
+      .style("text-anchor", "end")
+      .style("font-weight","bold")
+      .text("Duration (years)");
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+});
+
+</script>

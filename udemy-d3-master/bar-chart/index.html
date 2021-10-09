@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.x.axis text {
+  fill: #474747;
+  font-size: 15px;
+}
+
+.y.axis {
+  display: none;
+}
+
+</style>
+<body>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script>
+
+var margin = {top: 70, right: 20, bottom: 30, left: 20},
+    width = 400 - margin.left - margin.right,
+    height = 800 - margin.top - margin.bottom;
+
+var percentFormat = d3.format("%");
+
+var x = d3.scale.linear()
+    .rangeRound([0, width]);
+
+var y = d3.scale.ordinal()
+    .rangeRoundBands([0, height], .3);
+
+var xAxisTop = d3.svg.axis()
+    .scale(x)
+    .tickValues([0,0.5,1])
+    .tickFormat(percentFormat)
+    .orient("top");
+
+var xAxisBottom = d3.svg.axis()
+    .scale(x)
+    .tickValues([0,0.5,1])
+    .tickFormat(percentFormat)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .ticks(1)
+    .orient("left");
+
+var color = d3.scale.ordinal()
+    .range(["#8dd3c7","#bebada","#fb8072","#80b1d3","#fdb462","#b3de69","#b3b3b3","#bc80bd","#e5c494"]);
+
+var svg = d3.select('body').append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv("data.csv", function(error, data) {
+
+  x.domain([0,1]);
+  y.domain(data.map(function(d) { return d.subject; }));
+
+  var bar = svg.selectAll(".bar")
+      .data(data)
+    .enter().append("g");
+
+  bar.append("rect")
+      .attr("x", function(d) { return x(0); })
+      .attr("y", function(d) { return y(d.subject); })
+      .attr("width", function(d) { return x(+d.percent); })
+      .attr("height", y.rangeBand())
+      .style("fill",function(d) { return color(d.subject); });
+
+  bar.append("text")
+      .attr("x", x(0.01))
+      .attr("y", function(d) { return y(d.subject) + y.rangeBand()/2 + 3; })
+      .style("fill", function(d,i) { return i === 0 ? "#474747" : "#fff"; })
+      .text(function(d) { return d.subject; });
+
+  svg.append("g")
+     .attr("class", "x axis")
+     .call(xAxisTop)
+    .append("text")
+      .attr("y", -40)
+      .attr("x", -10)
+      .style("text-anchor", "begin")
+      .style('font-weight','bold')
+      .text("% virgin student by university subject");
+
+  svg.append("g")
+     .attr("class", "x axis")
+     .attr("transform", "translate(0," + height + ")")
+     .call(xAxisBottom);
+
+  svg.append("g")
+     .attr("class", "y axis")
+     .call(yAxis);
+
+});
+
+d3.select(self.frameElement).style("height", height + margin.top + margin.bottom + "px");
+
+</script>

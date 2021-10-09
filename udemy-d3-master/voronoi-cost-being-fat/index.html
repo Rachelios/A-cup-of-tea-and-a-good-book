@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>d3-voronoi-treemap usage</title>
+    <meta name="description" content="d3-voronoi-map plugin to remake 'The Costs of Being Fat, in Actual Dollars'">
+    <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+    <script src="https://rawcdn.githack.com/Kcnarf/d3-weighted-voronoi/v1.0.0/build/d3-weighted-voronoi.js"></script>
+    <script src="https://rawcdn.githack.com/Kcnarf/d3-voronoi-map/v1.2.0/build/d3-voronoi-map.js"></script>
+    <style>
+      svg {
+        background-color: rgb(250,250,250);
+      }
+      
+      #title {
+        letter-spacing: 4px;
+        font-weight: 700;
+        font-size: x-large;
+      }
+      
+      text.tiny {
+        font-size: 10pt;
+      }
+      text.light {
+        fill: lightgrey
+      }
+      
+      .symbol {
+        fill: none;
+        stroke: lightgrey;
+        stroke-width: 14px;
+      }
+      
+      .cell {
+        stroke: darkgrey;
+        stroke-width: 1px;
+      }
+      
+      .cost {
+        text-anchor: middle;
+      }
+      
+      .total-cost {
+        fill: lightgrey;
+        text-anchor: middle;
+        font-size: 20px;
+        font-weight: 700;
+      }
+      
+      .legend-color {
+        stroke-width: 1px;
+        stroke:darkgrey;
+      }
+      
+      .highlighter {
+        fill: transparent;
+        stroke: none;
+      }
+      .highlight {
+        stroke: black;
+        stroke-width: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <svg></svg>
+    
+    <script>
+      //begin: constants
+      var _2PI = 2*Math.PI;
+      //end: constants
+      
+      //begin: raw data global def
+      var menTotalCost = 0,
+          womenTotalCost = 0;
+      //end: raw data global def
+      
+      //begin: data-related utils
+      function menCostAccessor(d){ return d.menCost; };
+      function womenCostAccessor(d){ return d.womenCost; };
+      function highlighterGroup(d){ return "group-"+d.id};
+      //end: data-related utils
+      
+      //begin: layout conf.
+      var svgWidth = 960,
+          svgHeight = 500,
+          margin = {top: 10, right: 10, bottom: 10, left: 10},
+          height = svgHeight - margin.top - margin.bottom,
+          width = svgWidth - margin.left - margin.right,
+          halfWidth = width/2,
+          halfHeight = height/2,
+          quarterWidth = width/4,
+          quarterHeight = height/4,
+          titleY = 20,
+          legendsMinY = height - 20,
+          menTreemapCenter = [300, 200],
+          womenTreemapCenter = [650, 200];
+      //end: layout conf.
+      
+      //begin: treemap conf.
+      var baseRadius = 100;
+      var _voronoiMap = d3.voronoiMap();
+      var menRadius, womenRadius,
+          menCirclingPolygon, womenCirclingPolygon,
+          menPolygons, womenPolygons;
+      //end: treemap conf.
+      
+      //begin: reusable d3Selection
+      var svg, drawingArea, menContainer, womenContainer;
+      //end: reusable d3Selection
+      
+      d3.csv("costOfBeingFat.csv", csvParser, function(error, data) {
+        if (error) throw error;
+        
+        initData();
+        initLayout();
+        drawLegends(data);
+        
+        menPolygons = _voronoiMap
+          .clip(menCirclingPolygon)
+          .weight(menCostAccessor)
+        	(data.filter( function(d){ return menCostAccessor(d)>0; })).polygons;
+        womenPolygons = _voronoiMap
+          .clip(womenCirclingPolygon)
+          .weight(womenCostAccessor)
+        	(data.filter( function(d){ return womenCostAccessor(d)>0; })).polygons;
+        
+        drawTreemap("men");
+        drawTreemap("women");
+        
+        attachMouseListener(data);
+      });
+
+      function csvParser(d) {
+        d.id = +d.id;
+        d.composition = d.composition;
+        d.menCost = +d.menCost;
+        d.womenCost = +d.womenCost;
+        d.color = d.color;
+        
+        menTotalCost += d.menCost;
+        womenTotalCost += d.womenCost;
+        return d;
+      };
+      
+      function initData() {
+        menRadius = baseRadius;
+        womenRadius = baseRadius*Math.sqrt(womenTotalCost/menTotalCost);
+        menCirclingPolygon = computeCirclingPolygon(menRadius);
+        womenCirclingPolygon = computeCirclingPolygon(womenRadius);
+      }
+      
+      function computeCirclingPolygon(radius) {
+        var points = 60,
+            increment = _2PI/points,
+            circlingPolygon = [];
+        
+        for (var a=0, i=0; i<points; i++, a+=increment) {
+          circlingPolygon.push(
+            [radius*Math.cos(a), radius*Math.sin(a)]
+          )
+        }
+        
+      	return circlingPolygon;
+      };
+      
+      function initLayout() {
+        svg = d3.select("svg")
+          .attr("width", svgWidth)
+          .attr("height", svgHeight);
+        
+        drawingArea = svg.append("g")
+        	.classed("drawingArea", true)
+        	.attr("transform", "translate("+[margin.left,margin.top]+")");
+        
+        menContainer = drawingArea.append("g")
+        	.classed("men-container", true)
+        	.attr("transform", "translate("+menTreemapCenter+")");
+        
+        womenContainer = drawingArea.append("g")
+        	.classed("women-container", true)
+        	.attr("transform", "translate("+womenTreemapCenter+")")
+        
+        drawTitle();
+        drawFooter();
+        drawMenSymbol();
+        drawWomenSymbol();
+      }
+      
+      function drawTitle() {
+        drawingArea.append("text")
+        	.attr("id", "title")
+        	.attr("transform", "translate("+[halfWidth, titleY]+")")
+        	.attr("text-anchor", "middle")
+          .text("The Individual Costs of Being Obese in the U.S. (2010)")
+      }
+      
+      function drawFooter() {
+        drawingArea.append("text")
+        	.classed("tiny light", true)
+        	.attr("transform", "translate("+[0, height]+")")
+        	.attr("text-anchor", "start")
+        	.text("Remake of HowMuch.net's post 'The Costs of Being Fat, in Actual Dollars'")
+        drawingArea.append("text")
+        	.classed("tiny light", true)
+        	.attr("transform", "translate("+[halfWidth+45, height]+")")
+        	.attr("text-anchor", "middle")
+        	.text("by @_Kcnarf")
+        drawingArea.append("text")
+        	.classed("tiny light", true)
+        	.attr("transform", "translate("+[width, height]+")")
+        	.attr("text-anchor", "end")
+        	.text("bl.ocks.org/Kcnarf/238fa136f763f5ad908271a170ef60e2")
+      }
+      
+      function drawLegends(data) {
+        var legendHeight = 13,
+            interLegend = 4,
+            colorWidth = legendHeight*4;
+        
+        var legendContainer = drawingArea.append("g")
+        	.classed("legend", true)
+        	.attr("transform", "translate("+[0, legendsMinY]+")");
+        
+        var legends = legendContainer.selectAll(".legend")
+        	.data(data.reverse())
+        	.enter();
+        
+        var legend = legends.append("g")
+        	.classed("legend", true)
+        	.attr("transform", function(d,i){
+            return "translate("+[0, -i*(legendHeight+interLegend)]+")";
+          })
+        	
+        legend.append("rect")
+        	.classed("legend-color", true)
+        	.attr("y", -legendHeight)
+        	.attr("width", colorWidth)
+        	.attr("height", legendHeight)
+        	.style("fill", function(d){ return d.color; });
+        legend.append("text")
+        	.classed("tiny", true)
+        	.attr("transform", "translate("+[colorWidth+5, -2]+")")
+        	.text(function(d){ return d.composition; });
+        legend.append("rect")
+        	.attr("class", highlighterGroup)
+        	.classed("highlighter", true)
+        	.attr("y", -legendHeight)
+        	.attr("width", colorWidth)
+        	.attr("height", legendHeight);
+        
+        legendContainer.append("text")
+        	.attr("transform", "translate("+[0, -data.length*(legendHeight+interLegend)-5]+")")
+          .text("Annual costs of being obese");
+      }
+      
+      function drawMenSymbol() {
+        var delta = menRadius/10,
+            symbolLength = 40,
+            symbol = menContainer.append("g").classed("symbol", true);
+        
+        symbol.append("circle")
+        	.attr("r", menRadius-5);
+        symbol.append("path")
+        	.attr("transform", "translate("+[delta,-delta]+")")
+        	.attr("d", "M"+[0,0]+"L"+[menRadius,-menRadius]+
+          	"M"+[menRadius-symbolLength,-menRadius]+"h"+symbolLength+",v"+symbolLength
+          );
+      }
+      
+      function drawWomenSymbol() {
+        var delta = womenRadius,
+            symbolLength = 60,
+            midSymbolLength = symbolLength/2;
+        		symbol = womenContainer.append("g").classed("symbol", true);
+        
+        symbol.append("circle")
+        	.attr("r", womenRadius-5);
+        symbol.append("path")
+        	.attr("transform", "translate("+[0,delta]+")")
+        	.attr("d", "M"+[0,0]+"v"+symbolLength+
+          	"M"+[-midSymbolLength,midSymbolLength]+"h"+symbolLength
+          );
+      }
+      
+      function drawTreemap(gender) {
+        var container, polygons, costAccessor, delta, totalCost, totalCostRotation;
+        
+        if (gender==="men") {
+          container = menContainer;
+          polygons = menPolygons;
+          costAccessor = menCostAccessor;
+          delta = menRadius;
+          totalCost = "$"+menTotalCost;
+          totalCostRotation = -45;
+        } else {
+          container = womenContainer;
+          polygons = womenPolygons;
+          costAccessor = womenCostAccessor;
+          delta = womenRadius;
+          totalCost = "$"+womenTotalCost;
+          totalCostRotation = 45;
+        }
+        
+        var cells = container.append("g")
+        	.classed('cells', true)
+	        .selectAll(".cell")
+        	.data(polygons)
+        	.enter()
+        		.append("path")
+        			.classed("cell", true)
+        			.attr("d", function(d){ return "M"+d.join(",")+"z"; })
+        			.style("fill", function(d){
+            		return d.site.originalObject.data.originalData.color;
+          		});
+        
+        container.append("text")
+        	.classed("total-cost", true)
+        	.attr("transform", "rotate("+totalCostRotation+")translate(0,"+(-delta-6)+")")
+        	.text(totalCost);
+        
+        var costs = container.append("g")
+        	.classed('costs', true)
+	        .selectAll(".cost")
+        	.data(polygons)
+        	.enter()
+        		.append("text")
+        			.classed("cost", true)
+        			.attr("transform", function(d){
+          			return "translate("+[d.site.x, d.site.y+6]+")"; // +6 for centering
+        			})
+        			.text(function(d){
+                return "$"+costAccessor(d.site.originalObject.data.originalData);
+              })
+        
+        var higlighters = container.append("g")
+        	.classed('highlighters', true)
+	        .selectAll(".highlighter")
+        	.data(polygons)
+        	.enter()
+        		.append("path")
+        			.attr("class", function(d) {
+                return highlighterGroup(d.site.originalObject.data.originalData);
+              })
+        			.classed("highlighter", true)
+        			.attr("d", function(d){ return "M"+d.join(",")+"z"; });
+      }
+      
+      function attachMouseListener(data){
+        var id;
+        
+        data.forEach(function(d){
+          id = d.id
+          
+          d3.selectAll(".group-"+id)
+          	.on("mouseenter", highlight(id, true))
+          	.on("mouseleave", highlight(id, false));
+        })
+      }
+      
+      function highlight(groupId, highlight){
+        return function() {
+          d3.selectAll(".group-"+groupId)
+        		.classed("highlight", highlight);
+        }
+      }
+    </script>
+  </body>
+</html>

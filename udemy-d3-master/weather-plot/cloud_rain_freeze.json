@@ -1,0 +1,1718 @@
+[
+    {
+        "date": "1/1/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "1/2/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "1/3/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "1/4/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "1/5/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "1/6/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "1/7/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "1/8/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "1/9/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "1/10/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "1/11/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "1/12/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "1/13/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "1/14/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "1/15/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "1/16/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "1/17/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "1/18/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "1/19/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "overcast"
+    },
+    {
+        "date": "1/20/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "1/21/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "1/22/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "1/23/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "1/24/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "1/25/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "1/26/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "1/27/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "1/28/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "1/29/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "1/30/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "1/31/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "2/1/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "2/2/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "2/3/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "2/4/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "2/5/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "2/6/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "2/7/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "2/8/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "overcast"
+    },
+    {
+        "date": "2/9/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "2/10/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "2/11/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "2/12/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "overcast"
+    },
+    {
+        "date": "2/13/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "2/14/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "2/15/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "2/16/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "2/17/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "2/18/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "2/19/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "2/20/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "2/21/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "2/22/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "2/23/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "2/24/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "2/25/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "2/26/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "2/27/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "2/28/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "3/1/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "3/2/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "3/3/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "3/4/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "3/5/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "3/6/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "3/7/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "3/8/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "3/9/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "scattered"
+    },
+    {
+        "date": "3/10/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "3/11/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "3/12/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "3/13/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "3/14/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "3/15/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "overcast"
+    },
+    {
+        "date": "3/16/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "3/17/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "3/18/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "3/19/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "3/20/15",
+        "freeze": true,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "3/21/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "overcast"
+    },
+    {
+        "date": "3/22/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "3/23/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "3/24/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "3/25/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "3/26/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "3/27/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "3/28/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "overcast"
+    },
+    {
+        "date": "3/29/15",
+        "freeze": true,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "3/30/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "3/31/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "4/1/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "4/2/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "4/3/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "4/4/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "4/5/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "4/6/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "4/7/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "4/8/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "overcast"
+    },
+    {
+        "date": "4/9/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "overcast"
+    },
+    {
+        "date": "4/10/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "4/11/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "4/12/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "4/13/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "4/14/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "4/15/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "4/16/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "4/17/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "4/18/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "4/19/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "4/20/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "4/21/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "4/22/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "scattered"
+    },
+    {
+        "date": "4/23/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "4/24/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "4/25/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "4/26/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "4/27/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "overcast"
+    },
+    {
+        "date": "4/28/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "4/29/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "4/30/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "5/1/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "5/2/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "5/3/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "5/4/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "5/5/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "5/6/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "5/7/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "5/8/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "5/9/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "overcast"
+    },
+    {
+        "date": "5/10/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "5/11/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "5/12/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "5/13/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "5/14/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "5/15/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "5/16/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "5/17/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "5/18/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "overcast"
+    },
+    {
+        "date": "5/19/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "5/20/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "5/21/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "5/22/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "5/23/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "5/24/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "5/25/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "5/26/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "5/27/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "5/28/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "5/29/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "5/30/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "5/31/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "6/1/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "6/2/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "6/3/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "6/4/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "6/5/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "6/6/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "6/7/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "6/8/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "6/9/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "6/10/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "6/11/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "6/12/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "6/13/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "6/14/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "scattered"
+    },
+    {
+        "date": "6/15/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "6/16/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "6/17/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "6/18/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "overcast"
+    },
+    {
+        "date": "6/19/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "6/20/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "overcast"
+    },
+    {
+        "date": "6/21/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "6/22/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "6/23/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "clear"
+    },
+    {
+        "date": "6/24/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "6/25/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "6/26/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "6/27/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "6/28/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "6/29/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "6/30/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "7/1/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "7/2/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "7/3/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "7/4/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "7/5/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "7/6/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "7/7/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "7/8/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "7/9/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "7/10/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "7/11/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "7/12/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "7/13/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "7/14/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "7/15/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "7/16/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "7/17/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "7/18/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "7/19/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "7/20/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "7/21/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "7/22/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "7/23/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "7/24/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "7/25/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "7/26/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "7/27/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "7/28/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "7/29/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "7/30/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "7/31/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/1/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/2/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/3/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/4/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "scattered"
+    },
+    {
+        "date": "8/5/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/6/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/7/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/8/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/9/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "8/10/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "8/11/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "8/12/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/13/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/14/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/15/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/16/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/17/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "8/18/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "scattered"
+    },
+    {
+        "date": "8/19/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "8/20/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "8/21/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "8/22/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/23/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "8/24/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "8/25/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "8/26/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/27/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/28/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/29/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "8/30/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "scattered"
+    },
+    {
+        "date": "8/31/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/1/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/2/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/3/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/4/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "9/5/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/6/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/7/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/8/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/9/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "9/10/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "9/11/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "9/12/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "9/13/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "9/14/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/15/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/16/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/17/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/18/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/19/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "9/20/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "9/21/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/22/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "9/23/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/24/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/25/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/26/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "9/27/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "9/28/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "9/29/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "9/30/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "10/1/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "10/2/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "10/3/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "overcast"
+    },
+    {
+        "date": "10/4/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "10/5/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "10/6/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "10/7/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "10/8/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "scattered"
+    },
+    {
+        "date": "10/9/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    },
+    {
+        "date": "10/10/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "10/11/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "10/12/15",
+        "freeze": false,
+        "rain": false,
+        "cloud": "clear"
+    },
+    {
+        "date": "10/13/15",
+        "freeze": false,
+        "rain": true,
+        "cloud": "cloudy"
+    }
+]

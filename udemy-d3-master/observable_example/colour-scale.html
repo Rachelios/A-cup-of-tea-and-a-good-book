@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
+  <script src="https://npmcdn.com/babel-core@5.8.34/browser.min.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/gka/chroma.js/master/chroma.min.js"></script>
+
+  <style>
+    svg {
+      width: 800px;
+      height: 800px;
+    }
+  </style>
+</head>
+
+<body>
+  <svg></svg>
+  <script>
+    var blue = '#51aae8';
+    var pink = '#e68fc3';
+    var orange = '#f7cd83';
+    var green = '#55e851';
+    var violet = '#a651e8';
+    var red = '#e85151';
+    var yellow = '#f7e883';
+    var red2 = '#e85178';
+    
+    var colors = chroma
+    	.scale([red, orange, yellow, green, blue, violet, pink, red2]).colors(36);
+    var svg = d3.select('svg');
+    
+    var perRow = 6;
+    var size = 100;
+    var g = svg.selectAll('g')
+    	.data(colors).enter().append('g')
+    	.attr('transform', (d, i) => {
+      	var x = (i % perRow + 1) * size;
+      	var y = (Math.floor(i / perRow) + 1) * size;
+      	return 'translate(' + [x, y] + ')';
+      }).attr('fill', d => d);
+    
+    g.append('circle')
+    	.attr('r', size / 4);
+    
+    g.append('text')
+    	.attr('y', size / 4 + 15)
+    	.attr('text-anchor', 'middle')
+    	.attr('dy', '.35em')
+    	.text((d, i) => d);
+    
+
+  </script>
+</body>

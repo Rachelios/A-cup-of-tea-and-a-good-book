@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.js'></script>
+  <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700' rel='stylesheet' type='text/css'>
+  
+  <style>
+    svg {
+      width: 600px;
+      height: 20000px;
+    }
+  </style>
+</head>
+
+<body>
+  <svg></svg>
+  
+  <script>
+    const width = 600;
+    const height = 600;
+    
+    const petalPaths = [[
+    	'M0,0',
+      "C50,50 50,100 0,100",
+      "C-50,100 -50,50 0,0"
+    ],
+    [
+			'M-35,0',
+      'C-25,25 25,25 35,0',
+      'C50,25 25,75 0,100',
+      'C-25,75 -50,25 -35,0'
+    ],
+    [
+      'M0,0',
+      'C50,40 50,70 20,100',
+      'L0,85',
+      'L-20,100',
+      'C-50,70 -50,40 0,0'
+    ],
+    [
+      'M0,0',
+      'C50,25 50,75 0,100',
+      'C-50,75 -50,25 0,0'
+    ]];
+    
+    // instantiate scales and petal path lookup
+    const sizeScale = d3.scaleLinear()
+    	.range([0.1, 1]);
+   	const numPetalsScale = d3.scaleQuantize()
+    	.range(_.range(5, 10));
+    const pathLookup = {
+      G: petalPaths[0],
+      PG: petalPaths[1],
+      'PG-13': petalPaths[2],
+      R: petalPaths[3],
+    };
+    
+    // grab svg
+    const svg = d3.select(' svg');
+    
+    /*****************************************************
+    ** get movie data
+    ******************************************************/
+    
+    d3.json('movies.json', function(movies) {
+      movies = _.map(movies, movie => {
+        return {
+          rating: ++movie.imdbRating,
+          votes: parseInt(movie.imdbVotes.replace(/\,/g, '')),
+          year: ++movie.Year,
+          title: movie.Title,
+          pg: movie.Rated,
+        }
+      });
+      
+      // 1. set domain for scales
+      // size scale = rating
+      // number of petals scale = number of votes
+      const sizeExtent = d3.extent(movies, d => d.rating);
+      const numPetalsExtent = d3.extent(movies, d => d.votes);
+      // set domain on scales
+      sizeScale.domain(sizeExtent);
+      numPetalsScale.domain(numPetalsExtent);
+      
+      // function that calculates data for the petals
+      // and draws flower with enter-update
+      function drawFlower(index) {
+        const movie = movies[index];
+        // 2. create petal data for selected movie
+        const numPetals = numPetalsScale(movie.votes)
+        const petalData = _.times(numPetals, (i) => {
+          // 1. rotation of the petal
+          const rotate = (i / numPetals) * 360;
+          // 2. path of petal (pg)
+          // 3. size of petals (IMDB ratings)
+          return {
+            rotate,
+            path: pathLookup[movie.pg],
+            size: sizeScale(movie.rating),
+          }
+        });
+      
+        // 3. set data and enter-update-exit
+        const petals = svg.selectAll('path').data(petalData);
+        
+        // exit
+				petals.exit().remove();
+        
+        // enter
+       	const enter = petals.enter().append('path')
+          .attr('fill', 'none')
+          .attr('stroke', '#000');
+        
+        // update
+        enter.merge(petals)
+          .attr('transform', d => `translate(100,100)rotate(${d.rotate})scale(${d.size})`)
+          .attr('d', d => d.path);
+      }
+      
+			let index = 0;
+      drawFlower(0);
+      // WILL eventually crash your browser,
+      // uncomment at your own risk.
+//       setInterval(() => {
+//         index += 1;
+//         if (index === movies.length) {
+//           index = 0;
+//         }
+//         drawFlower(index);
+//       }, 1000);
+    });
+    
+  </script>
+</body>

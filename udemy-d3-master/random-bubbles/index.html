@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>ninjaPixel.js Bubble Chart</title>
+</head>
+<style>
+.ninja-axis path,
+.ninja-axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+.ninja-background {
+    fill: none;
+    stroke: #333333;
+}
+text {
+    font: 12px sans-serif;
+    position: absolute;
+}
+.ninja-chartTitle {
+    font: 18px sans-serif;
+}
+.yTitle,
+.xTitle {
+    font: 16px sans-serif;
+}
+.d3-tip {
+    line-height: 1;
+    padding: 8px;
+    background: rgba(100, 100, 100, 0.7);
+    color: #fff;
+    border-radius: 2px;
+    font: 12px sans-serif;
+    width: 100px;
+}
+/* Creates a small triangle extender for the tip */
+
+.d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(100, 100, 100, 0.7);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+}
+/* Style northward tooltips differently */
+
+.d3-tip.n:after {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+}
+.ninja-horizontalGrid,
+.ninja-verticalGrid {
+    stroke: lightgrey;
+    opacity: 0.7;
+}
+.ninja-horizontalGridTopping {
+    stroke: #333333;
+    opacity: 0.7;
+}
+</style>
+
+<body>
+    <div id="chart"></div>
+    <div id="message"></div>
+</body>
+<script src="ninjaPixel.bundle.js" charset="utf-8"></script>
+<script>
+function randomBubbleData() {
+    function randomNumber(maxAbsoluteValue) {
+        var posNeg = -1;
+        if (Math.random() > 0.5) {
+            posNeg = 1;
+        }
+        return~~ (Math.random() * maxAbsoluteValue * posNeg);
+    }
+    var numberOfBubbles = 100,
+        bubbleData = [],
+        colors = d3.scale.category20();
+
+
+    for (var i = 0; i < numberOfBubbles; i++) {
+        var x = randomNumber(60),
+            y = randomNumber(60),
+            r = Math.abs(randomNumber(30)),
+            color = colors(i);
+
+        bubbleData.push({
+            x: x,
+            y: y,
+            r: r,
+            color: color
+        });
+    }
+
+    return bubbleData;
+}
+
+var bubbleChart = new ninjaPixel.BubbleChart();
+bubbleChart.transitionDuration(1000)
+    .margin({
+        top: 100,
+        bottom: 80,
+        left: 60,
+        right: 30
+    })
+    .plotBackground(false)
+    .transitionEase('cubic')
+    .transitionDelay(function(d, i) {
+        return i * 25;
+    })
+    .height(600)
+    .plotHorizontalGrid(true)
+    .plotVerticalGrid(true)
+    .plotBackground(true)
+    .title('Random Bubbles')
+    .yAxis1Title('Y Title')
+    .xAxisTitle('X Title')
+    .itemStroke('white')
+    .itemFill(function(d) {
+        return d.color;
+    })
+    .allowBubblesToSpillOffChart(false)
+    .itemOpacity(0.5)
+    .mouseOverItemOpacity(0.9)
+    .mouseOverItemStroke('#333333')
+    .axesOrigin({
+        x: 0,
+        y: 0
+    })
+    .xAxisTextTransform('rotate(-90) translate(-10,-13)');
+
+var toolTip = bubbleChart.toolTip();
+toolTip.html(function(d) {
+    return 'x: ' + d.x + ', y: ' + d.y + ', r: ' + d.r;
+});
+bubbleChart.toolTip(toolTip);
+
+function ready() {
+    var bubbleData = randomBubbleData();
+    bubbleChart.plot(d3.select("#chart")
+        .datum(bubbleData));
+}
+
+ready();
+</script>
+
+</html>

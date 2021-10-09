@@ -1,0 +1,1 @@
+Wars dataset from [COW](http://www.correlatesofwar.org/). Each path represents a war and associated circles represent the number of victims. Inspired from Valentina D'Efilippo's [work](http://poppyfield.org/) 

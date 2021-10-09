@@ -1,0 +1,217 @@
+car_type,export_production,date,value
+Passenger cars,Production,1/01/2008,475197
+Passenger cars,Production,1/02/2008,531397
+Passenger cars,Production,1/03/2008,492336
+Passenger cars,Production,1/04/2008,579869
+Passenger cars,Production,1/05/2008,444537
+Passenger cars,Production,1/06/2008,516609
+Passenger cars,Production,1/07/2008,434801
+Passenger cars,Production,1/08/2008,340288
+Passenger cars,Production,1/09/2008,535893
+Passenger cars,Production,1/10/2008,448565
+Passenger cars,Production,1/11/2008,452590
+Passenger cars,Production,1/12/2008,279948
+Passenger cars,Production,1/01/2009,310113
+Passenger cars,Production,1/02/2009,297921
+Passenger cars,Production,1/03/2009,435693
+Passenger cars,Production,1/04/2009,373308
+Passenger cars,Production,1/05/2009,427239
+Passenger cars,Production,1/06/2009,478133
+Passenger cars,Production,1/07/2009,410321
+Passenger cars,Production,1/08/2009,325060
+Passenger cars,Production,1/09/2009,553205
+Passenger cars,Production,1/10/2009,508450
+Passenger cars,Production,1/11/2009,493851
+Passenger cars,Production,1/12/2009,351229
+Passenger cars,Production,1/01/2010,376937
+Passenger cars,Production,1/02/2010,450355
+Passenger cars,Production,1/03/2010,560055
+Passenger cars,Production,1/04/2010,464591
+Passenger cars,Production,1/05/2010,470130
+Passenger cars,Production,1/06/2010,528820
+Passenger cars,Production,1/07/2010,392553
+Passenger cars,Production,1/08/2010,335748
+Passenger cars,Production,1/09/2010,536468
+Passenger cars,Production,1/10/2010,502507
+Passenger cars,Production,1/11/2010,519765
+Passenger cars,Production,1/12/2010,414480
+Passenger cars,Production,1/01/2011,398078
+Passenger cars,Production,1/02/2011,519342
+Passenger cars,Production,1/03/2011,583399
+Passenger cars,Production,1/04/2011,470463
+Passenger cars,Production,1/05/2011,563015
+Passenger cars,Production,1/06/2011,456548
+Passenger cars,Production,1/07/2011,462005
+Passenger cars,Production,1/08/2011,396706
+Passenger cars,Production,1/09/2011,562504
+Passenger cars,Production,1/10/2011,502897
+Passenger cars,Production,1/11/2011,546272
+Passenger cars,Production,1/12/2011,410689
+Passenger cars,Production,1/01/2012,443510
+Passenger cars,Production,1/02/2012,508798
+Passenger cars,Production,1/03/2012,546169
+Passenger cars,Production,1/04/2012,426321
+Passenger cars,Production,1/05/2012,448045
+Passenger cars,Production,1/06/2012,463839
+Passenger cars,Production,1/07/2012,460830
+Passenger cars,Production,1/08/2012,363254
+Passenger cars,Production,1/09/2012,450072
+Passenger cars,Production,1/10/2012,454716
+Passenger cars,Production,1/11/2012,482406
+Passenger cars,Production,1/12/2012,340499
+Passenger cars,Production,1/01/2013,397634
+Passenger cars,Production,1/02/2013,459180
+Passenger cars,Production,1/03/2013,474467
+Passenger cars,Production,1/04/2013,502411
+Passenger cars,Production,1/05/2013,428684
+Passenger cars,Production,1/06/2013,475779
+Passenger cars,Production,1/07/2013,444960
+Passenger cars,Production,1/08/2013,394991
+Passenger cars,Production,1/09/2013,514468
+Passenger cars,Production,1/10/2013,456669
+Passenger cars,Production,1/11/2013,537383
+Passenger cars,Production,1/12/2013,353278
+Passenger cars,Production,1/01/2014,442430
+Passenger cars,Production,1/02/2014,513041
+Passenger cars,Production,1/03/2014,522428
+Passenger cars,Production,1/04/2014,494416
+Passenger cars,Production,1/05/2014,482483
+Passenger cars,Production,1/06/2014,456069
+Passenger cars,Production,1/07/2014,535001
+Passenger cars,Production,1/08/2014,272744
+Passenger cars,Production,1/09/2014,524072
+Passenger cars,Production,1/10/2014,478999
+Passenger cars,Production,1/11/2014,515340
+Passenger cars,Production,1/12/2014,367003
+Passenger cars,Production,1/01/2015,421510
+Passenger cars,Production,1/02/2015,501118
+Passenger cars,Production,1/03/2015,556049
+Passenger cars,Production,1/04/2015,479631
+Passenger cars,Production,1/05/2015,447925
+Passenger cars,Production,1/06/2015,513315
+Passenger cars,Production,1/07/2015,533264
+Passenger cars,Production,1/08/2015,338834
+Passenger cars,Production,1/09/2015,538149
+Passenger cars,Production,1/10/2015,529856
+Passenger cars,Production,1/11/2015,518512
+Passenger cars,Production,1/12/2015,329975
+Passenger cars,Production,1/01/2016,416983
+Passenger cars,Production,1/02/2016,529061
+Passenger cars,Production,1/03/2016,523210
+Passenger cars,Production,1/04/2016,550158
+Passenger cars,Production,1/05/2016,445393
+Passenger cars,Production,1/06/2016,563546
+Passenger cars,Production,1/07/2016,410630
+Passenger cars,Production,1/08/2016,410256
+Passenger cars,Production,1/09/2016,529463
+Passenger cars,Production,1/10/2016,464434
+Passenger cars,Production,1/11/2016,535180
+Passenger cars,Production,1/12/2016,368494
+Trucks,Production,1/01/2008,25412
+Trucks,Production,1/02/2008,28381
+Trucks,Production,1/03/2008,27083
+Trucks,Production,1/04/2008,32175
+Trucks,Production,1/05/2008,25918
+Trucks,Production,1/06/2008,28591
+Trucks,Production,1/07/2008,25323
+Trucks,Production,1/08/2008,24331
+Trucks,Production,1/09/2008,29329
+Trucks,Production,1/10/2008,24756
+Trucks,Production,1/11/2008,18562
+Trucks,Production,1/12/2008,11065
+Trucks,Production,1/01/2009,12277
+Trucks,Production,1/02/2009,9334
+Trucks,Production,1/03/2009,13133
+Trucks,Production,1/04/2009,10349
+Trucks,Production,1/05/2009,12879
+Trucks,Production,1/06/2009,14238
+Trucks,Production,1/07/2009,12826
+Trucks,Production,1/08/2009,12165
+Trucks,Production,1/09/2009,18601
+Trucks,Production,1/10/2009,20106
+Trucks,Production,1/11/2009,17875
+Trucks,Production,1/12/2009,13845
+Trucks,Production,1/01/2010,14349
+Trucks,Production,1/02/2010,17655
+Trucks,Production,1/03/2010,20594
+Trucks,Production,1/04/2010,19105
+Trucks,Production,1/05/2010,18591
+Trucks,Production,1/06/2010,21773
+Trucks,Production,1/07/2010,19710
+Trucks,Production,1/08/2010,10444
+Trucks,Production,1/09/2010,23025
+Trucks,Production,1/10/2010,20866
+Trucks,Production,1/11/2010,27080
+Trucks,Production,1/12/2010,17494
+Trucks,Production,1/01/2011,19977
+Trucks,Production,1/02/2011,21555
+Trucks,Production,1/03/2011,23891
+Trucks,Production,1/04/2011,21584
+Trucks,Production,1/05/2011,25242
+Trucks,Production,1/06/2011,19651
+Trucks,Production,1/07/2011,20441
+Trucks,Production,1/08/2011,19684
+Trucks,Production,1/09/2011,27674
+Trucks,Production,1/10/2011,24456
+Trucks,Production,1/11/2011,29416
+Trucks,Production,1/12/2011,21459
+Trucks,Production,1/01/2012,21618
+Trucks,Production,1/02/2012,21703
+Trucks,Production,1/03/2012,24872
+Trucks,Production,1/04/2012,17889
+Trucks,Production,1/05/2012,22248
+Trucks,Production,1/06/2012,23178
+Trucks,Production,1/07/2012,20078
+Trucks,Production,1/08/2012,19069
+Trucks,Production,1/09/2012,25366
+Trucks,Production,1/10/2012,24434
+Trucks,Production,1/11/2012,24850
+Trucks,Production,1/12/2012,15496
+Trucks,Production,1/01/2013,19743
+Trucks,Production,1/02/2013,21021
+Trucks,Production,1/03/2013,24014
+Trucks,Production,1/04/2013,25375
+Trucks,Production,1/05/2013,23212
+Trucks,Production,1/06/2013,26161
+Trucks,Production,1/07/2013,20857
+Trucks,Production,1/08/2013,21898
+Trucks,Production,1/09/2013,25196
+Trucks,Production,1/10/2013,23137
+Trucks,Production,1/11/2013,29256
+Trucks,Production,1/12/2013,18448
+Trucks,Production,1/01/2014,25329
+Trucks,Production,1/02/2014,23337
+Trucks,Production,1/03/2014,24855
+Trucks,Production,1/04/2014,27804
+Trucks,Production,1/05/2014,27494
+Trucks,Production,1/06/2014,28063
+Trucks,Production,1/07/2014,25655
+Trucks,Production,1/08/2014,20743
+Trucks,Production,1/09/2014,29240
+Trucks,Production,1/10/2014,26320
+Trucks,Production,1/11/2014,25247
+Trucks,Production,1/12/2014,19435
+Trucks,Production,1/01/2015,27071
+Trucks,Production,1/02/2015,26000
+Trucks,Production,1/03/2015,30193
+Trucks,Production,1/04/2015,27932
+Trucks,Production,1/05/2015,24309
+Trucks,Production,1/06/2015,29727
+Trucks,Production,1/07/2015,22937
+Trucks,Production,1/08/2015,19059
+Trucks,Production,1/09/2015,31125
+Trucks,Production,1/10/2015,32696
+Trucks,Production,1/11/2015,31496
+Trucks,Production,1/12/2015,22681
+Trucks,Production,1/01/2016,24202
+Trucks,Production,1/02/2016,28822
+Trucks,Production,1/03/2016,27792
+Trucks,Production,1/04/2016,28587
+Trucks,Production,1/05/2016,26259
+Trucks,Production,1/06/2016,29962
+Trucks,Production,1/07/2016,23481
+Trucks,Production,1/08/2016,16152
+Trucks,Production,1/09/2016,30938
+Trucks,Production,1/10/2016,27109
+Trucks,Production,1/11/2016,28935
+Trucks,Production,1/12/2016,23515

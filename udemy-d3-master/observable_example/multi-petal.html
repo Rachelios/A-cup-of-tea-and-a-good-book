@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.js'></script>
+  <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700' rel='stylesheet' type='text/css'>
+  
+  <style>
+    svg {
+      width: 1500px;
+      height: 500px;
+    }
+  </style>
+</head>
+
+<body>
+  <svg></svg>
+  
+  <script>
+    const width = 600;
+    const height = 600;
+    
+    const petalPaths = [[
+    	'M0,0',
+      'C50,40 50,70 20,100',
+      'L0,85',
+      'L-20,100',
+      'C-50,70 -50,40 0,0'
+    ],
+                        [
+			'M-35,0',
+      'C-25,25 25,25 35,0',
+      'C50,25 25,75 0,100',
+      'C-25,75 -50,25 -35,0'
+    ],
+    [
+      'M0,0',
+      'C50,40 50,70 20,100',
+      'L0,85',
+      'L-20,100',
+      'C-50,70 -50,40 0,0'
+    ],
+    [
+      'M0,0',
+      'C50,25 50,75 0,100',
+      'C-50,75 -50,25 0,0'
+    ]
+    	// ADD 3 MORE PETAL PATHS                   
+    ];
+    
+    // instantiate scales and petal path lookup
+    const sizeScale = d3.scaleLinear()
+    	.range([0.1, 1]);
+   	const numPetalsScale = d3.scaleQuantize()
+    	.range(_.range(5, 10));
+    const pathLookup = {
+      G: petalPaths[0],
+      PG: petalPaths[1],
+      'PG-13': petalPaths[2],
+      R: petalPaths[3],
+    };
+    
+    // grab svg
+    const svg = d3.select(' svg');
+    
+    /*****************************************************
+    ** get movie data
+    ******************************************************/
+    
+    d3.json('movies.json', function(movies) {
+      movies = _.map(movies, movie => {
+        return {
+          rating: ++movie.imdbRating,
+          votes: parseInt(movie.imdbVotes.replace(/\,/g, '')),
+          year: ++movie.Year,
+          title: movie.Title,
+          pg: movie.Rated,
+        }
+      });
+      
+      // 1. set domain for scales
+      // size scale = rating
+      // number of petals scale = number of votes
+      const sizeExtent = d3.extent(movies, d => d.rating);
+      const numPetalsExtent = d3.extent(movies, d => d.votes);
+      // set domain on scales
+      sizeScale.domain(sizeExtent);
+      numPetalsScale.domain(numPetalsExtent);
+      
+      function drawFlowers(movies) {
+        // create data
+      const perRow = 5;
+      const flowerData = _.map(movies, (d, i) => {
+        // flower: translate and scale
+        // petal: path and rotate
+        const x = (Math.floor(i % perRow) + 0.5) * 150;
+        const y = (Math.floor(i / perRow) + 0.5) * 150;
+        const numPetals = numPetalsScale(d.votes);
+        const petals = _.times(numPetals, i => {
+          return {
+            path: pathLookup[d.pg].join(' '),
+            rotate: i * (360 / numPetals),
+            numPetals,
+          }
+        });
+        
+        return {
+          title: d.title,
+          translate: [x, y],
+          scale: sizeScale(d.rating),
+          petals
+        }
+      });
+
+      const t = d3.transition().duration(500);
+      // 2. create a <g> for each flower
+      // and translate+scale the whole flower
+      // instead of individual petals
+      let flowers = svg.selectAll('g').data(flowerData);
+      
+      flowers.exit().transition(t)
+      	.attr('transform', d => `translate(${d.translate})scale(0)`)
+        .remove();
+      
+      const enter = flowers.enter().append('g');
+      	
+      enter.append('text')
+      	.attr('text-anchor', 'middle');
+      
+      // enter + update
+      flowers = enter
+      	.attr('transform', d => `translate(${d.translate})scale(0)`)
+        .merge(flowers)
+      flowers.transition(t)
+      	.attr('transform', d => `translate(${d.translate})scale(${d.scale})`);
+      
+      // update text
+     flowers.select('text')
+      .text(d => d.title)
+       
+      // draw petals 
+      const petals = flowers.selectAll('path')
+      	.data(d => d.petals);
+      
+      petals.exit().remove();
+      
+      // enter + update petals
+      petals.enter().insert('path', 'text')
+      	.merge(petals)
+      	.transition(t)
+      	.attr('d', d => d.path)
+      	.attr('transform', d => `rotate(${d.rotate})`)
+      	.attr('fill', '#FFC8F0')
+      	.attr('stroke', '#FFC8F0')
+        .attr('fill-opacity', 0.5)
+        .attr('stroke-width', 2);
+    
+      }
+      
+      let i = 0;
+     	setInterval(() => {
+        i += 1;
+        if (i === movies.length) {
+          i = 0;
+        }
+        drawFlowers(_.slice(movies, i, i + 9));
+      }, 1000)
+    });
+    
+  </script>
+</body>

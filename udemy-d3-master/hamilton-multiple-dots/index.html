@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
+  <script src="https://npmcdn.com/babel-core@5.8.34/browser.min.js"></script>
+  <style>
+    body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
+  </style>
+</head>
+
+<body>
+  <svg></svg>
+  <script type="text/babel">
+    var charList = {
+      "1": ["Aaron Burr", "M"],
+      "2": ["Alexander Hamilton", "M"],
+      "3": ["George Washington", "M"],
+      "4": ["John Laurens", "M"],
+      "5": ["Marquis de Lafayette", "M"],
+      "6": ["Hercules Mulligan", "M"],
+      "7": ["Elizabeth Hamilton", "F"],
+      "8": ["Angelica Schuyler", "F"],
+      "9": ["Peggy Schuyler", "F"],
+      "10": ["Thomas Jefferson", "M"],
+      "11": ["James Madison", "M"],
+      "12": ["King George III", "M"],
+      "13": ["Samuel Seabury", "M"],
+      "14": ["Charles Lee", "M"],
+      "15": ["Phillip Hamilton", "M"],
+      "16": ["Maria Reynolds", "F"],
+      "17": ["James Reynolds", "M"],
+      "18": ["George Eacker", "M"],
+      "21": ["Women", "F", true],
+      "22": ["Men", "M", true],
+      "23": ["Ensemble", "F/M", true],
+      "24": ["Company", "F/M", true]
+    };
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    var color = d3.scaleOrdinal(d3.schemeCategory20);
+    var radius = 3;
+    var radiusScale = d3.scaleLinear()
+    	.range([radius, radius * 5]);
+    var simulation = d3.forceSimulation()
+    	.force('collide', d3.forceCollide().radius(d => d.radius + 3))
+//       .force("center", d3.forceCenter(width / 2, height / 2))
+    	.force('x', d3.forceX().x(d => d.focusX))
+    	.force('y', d3.forceY().y(d => d.focusY))
+    	.alphaMin(.01)
+    	.alphaDecay(.02);
+    
+    var svg = d3.select('svg')
+    	.attr('width', width).attr('height', height);
+
+    d3.json('characters.json', (characters) => {
+      d3.json('lines.json', lines => {
+        
+        var linesArray = _.values(lines);
+        var maxSize = _.maxBy(linesArray, 3)[3];
+        var minSize = _.minBy(linesArray, 3)[3];
+        radiusScale.domain([minSize, maxSize]);
+        
+        var allLines = _.chain(lines)
+          .map((line, id) => {
+            // get all characters from the line
+            return _.map(line[1][0], (character) => {
+            	return {
+                id: character + ':' + id,
+                lineId: id,
+                characterId: character,
+                radius: radiusScale(line[3]),
+                x: width / 2,
+                y: height / 2,
+                data: line,
+              };
+            });
+          }).flatten().value();
+        var sortedChars = _.chain(characters.characters)
+        	.map((lines, character) => [character, lines.length])
+        	// filter it out if it's a group
+        	.filter((character) => !charList[character[0]][2])
+        	.sortBy((character) => -character[1])
+        	.map(0).value();
+        sortedChars.push('group');
+        
+        var perRow = 4;
+        var rowWidth = window.innerWidth / (perRow + 1);
+        var charPos = _.reduce(sortedChars, (obj, character, i) => {
+          obj[character] = {
+            id: character,
+            name: charList[character] ? charList[character][0] : 'Group',
+            x: (i % perRow + 1) * rowWidth,
+            y: (Math.floor(i / perRow) + 1) * rowWidth,
+          };
+          return obj;
+        }, {});
+        // now assign the character positions to all nodes
+        _.each(allLines, line => {
+          var pos = charPos[line.characterId] || charPos['group'];
+          line.focusX = pos.x;
+          line.focusY = pos.y;
+        });
+        
+        
+        var circle = svg.append('g')
+        	.classed('circles', true)
+        	.selectAll('circle')
+        	.data(allLines, (d) => d.id)
+        	.enter().append('circle')
+        	.attr('fill', (d) => color(d.characterId))
+        	.attr('r', (d) => d.radius);
+        svg.append('g')
+        	.classed('texts', true)
+        	.selectAll('text')
+        	.data(_.values(charPos), (d) => d.id)
+        	.enter().append('text')
+        	.attr('x', (d) => d.x)
+        	.attr('y', (d) => d.y)
+        	.attr('text-anchor', 'middle')
+        	.attr('dy', '.35em')
+        	.text((d) => d.name);
+        simulation.nodes(allLines)
+        	.on('tick', forceTick);
+        
+        function forceTick() {
+          console.log(simulation.alpha())
+          circle
+            .attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; });
+        }
+        
+      });
+    });
+  </script>
+</body>

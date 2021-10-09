@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.node {
+    stroke: #eee;
+    stroke-width: 2.0px;
+}
+
+.link {
+    stroke: #3B3F41;
+    stroke-opacity: 0.2;
+    stroke-width: 2.0;
+}
+
+#chart{
+    width:98%;
+    height:98%;
+}
+
+text {
+  font: 12pt "Lucida Sans Unicode";
+  pointer-events: none;
+}
+
+</style>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<body>
+<div id="chart"></div>
+<script>
+
+var margin = {top: -5, right: -5, bottom: -5, left: -5};
+
+var width = 400 - margin.left - margin.right,
+	height = 300- margin.top - margin.bottom,
+    r = 17;
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var vis = d3.select("#chart")
+    .append("svg:svg")
+    .attr("width", width)
+    .attr("height", height)
+    .append('svg:g');
+
+vis.append('svg:rect')
+    .attr('width', width)
+    .attr('height', height)
+    .attr('fill', 'white');
+
+d3.json("metals.json", function(data) {
+
+    var force = d3.layout.force()
+        .nodes(data.nodes)
+        .size([width + margin.left + margin.right, height + margin.top + margin.bottom])
+        .charge(-500)
+        .gravity(0.6)
+        .start();
+
+    var node = vis.selectAll(".node")
+        .data(data.nodes)
+        .enter().append("circle")
+        .attr("class", "node")
+        .attr("r", function(d) {return d.size*2})
+        .style("fill", function(d) { return d.color})
+        .style("stroke", function(d) {return d3.rgb(d.color).darker(); })
+        .style("stroke-width", 4)
+        .style("opacity", 0.5)
+        .call(force.drag)
+        node.append("title")
+
+        .text(function(d) { return d.element; })
+
+    var texts = vis.selectAll("text.label")
+        .data(data.nodes)
+        .enter().append("text")
+        .attr("class", "label")
+        .attr("fill", "black")
+        .style("text-anchor", "middle")
+        .attr("dy", ".32em")
+        .style("font-size", function(d) { return 13})
+        .text(function(d) {  return d.element;  });
+
+    force.on("tick", function() {
+
+    node.attr("cx", function(d) { return d.x = Math.max(r, Math.min(width - r, d.x)); })
+        .attr("cy", function(d) { return d.y = Math.max(r, Math.min(height - r, d.y)); });
+
+    texts.attr("cx", function(d) { return d.x = Math.max(r, Math.min(width - r, d.x)); })
+         .attr("cy", function(d) { return d.y = Math.max(r, Math.min(height - r, d.y)); });
+
+    texts.attr("transform", function(d) {return "translate(" + d.x + "," + d.y + ")"; });
+    });
+})
+
+</script>
+</body>

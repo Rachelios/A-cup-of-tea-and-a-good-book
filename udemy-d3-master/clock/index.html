@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <style>
+    body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; font-family: 'Roboto', sans-serif;}
+    svg { width: 100%; height: 100%; }
+    #wrap{position: absolute; bottom: 10px; left: 446px;}
+  </style>
+</head>
+
+<body>
+  <div id="charts"></div>
+  <div id="wrap">
+    <span id="h"></span> :
+  	<span id="m"></span> :
+  	<span id="s"></span>
+  </div>
+</body>
+<script>
+  	var h, m, s
+    var hx, hy, mx, my, sx, sy
+  
+    var margin = {top: 20, right: 10, bottom: 20, left: 10};
+    var width = 960 - margin.left - margin.right;
+    var height = 500 - margin.top - margin.bottom;
+    var svg = d3.select("#charts").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+		
+  	svg.append('circle')
+    	.attr('r', 200)
+    	.attr('cx', width/2)
+    	.attr('cy', height/2)
+      .style('fill', 'pink')
+    
+    svg.append('line')
+      .attr('class', 'h')
+      .attr('x1', width/2)
+      .attr('x2', hx)
+      .attr('y1', height/2)
+      .attr('y2', hy)
+    	.style('stroke', 'white')
+    	.style('stroke-width', 8)
+    
+    svg.append('line')
+    	.attr('class', 'm')
+      .attr('x1', width/2)
+      .attr('x2', mx)
+      .attr('y1', height/2)
+      .attr('y2', my)
+    	.style('stroke', 'white')
+      .style('stroke-width', 5)
+       
+    svg.append('line')
+      .attr('class', 's')
+      .attr('x1', width/2)
+      .attr('x2', sx)
+      .attr('y1', height/2)
+      .attr('y2', sy)
+    	.style('stroke', 'orange')
+      .style('stroke-width', 2)
+    
+    svg.append('circle')
+    	.attr('r', 10)
+    	.attr('cx', width/2)
+    	.attr('cy', height/2)
+      .style('fill', 'white')
+        
+    function tick() {
+      var today = new Date()
+     	h = today.getHours()
+      m = today.getMinutes()
+      s = today.getSeconds()
+      
+      hx = Math.sin(Math.PI - h/24 * Math.PI * 2) * 120
+      hy = Math.cos(Math.PI - h/24 * Math.PI * 2) * 120
+      
+      mx = Math.sin(Math.PI - m/60 * Math.PI * 2) * 180
+      my = Math.cos(Math.PI - m/60 * Math.PI * 2) * 180
+      
+      sx = Math.sin(Math.PI - s/60 * Math.PI * 2) * 200
+      sy = Math.cos(Math.PI - s/60 * Math.PI * 2) * 200
+      
+      d3.select('#h').html(h < 10 ? '0' + h : h)
+      d3.select('#m').html(m < 10 ? '0' + m : m)
+      d3.select('#s').html(s < 10 ? '0' + s : s)  
+      
+      d3.select('.h')
+      	.attr('x2', hx + width / 2)
+      	.attr('y2', hy + height / 2)
+      d3.select('.m')
+      	.attr('x2', mx + width / 2)
+      	.attr('y2', my + height / 2)  
+      d3.select('.s')
+      	.attr('x2', sx + width / 2)
+      	.attr('y2', sy + height / 2)      
+    }
+
+    function loop(cb){
+      requestAnimationFrame(function(){
+        loop(cb)
+      })
+      cb()
+    }
+
+    loop(tick)
+  </script>

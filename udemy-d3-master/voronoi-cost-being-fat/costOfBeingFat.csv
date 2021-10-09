@@ -1,0 +1,9 @@
+id,composition,menCost,womenCost,color
+0,"Wage Discrimination",0,1855,"#b5a8d8"
+1,"Direct Medical",1474,1474,"#bfe5df"
+2,"Short-term Disability",389,309,"#a3c5cb"
+3,"Productivity (Presenteeism)",358,358,"#abb6ab"
+4,"Sick Leave (Absenteeism)",212,674,"#b7d8a9"
+5,"Life Insurance",121,121,"#ffe7a4"
+6,"Disability Pension Insurance",69,69,"#f7c098"
+7,"Gasoline for cars",23,21,"#f3a39c"

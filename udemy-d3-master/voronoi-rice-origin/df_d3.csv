@@ -1,0 +1,36 @@
+world,region_grp,Country,code,weight,color
+world,Eastern Asia,China,CHN,0.889188729244159,#EFB605
+world,Eastern Asia,Democratic People's Republic of Korea,PRK,0.014967706383358,#EFB605
+world,Eastern Asia,Japan,JPN,0.0616617638716683,#EFB605
+world,Eastern Asia,Mongolia,MNG,0.000178283454485044,#EFB605
+world,Eastern Asia,Republic of Korea,KOR,0.0340035170463294,#EFB605
+world,Other region,Egypt,EGY,0.124394984564961,#E58903
+world,Other region,Iraq,IRQ,0.0521742444452914,#E58903
+world,Other region,Madagascar,MDG,0.0895613399900911,#E58903
+world,Other region,Saudi Arabia,SAU,0.0395975456381722,#E58903
+world,Other region,United States of America,USA,0.0839589923396471,#E58903
+world,South America,Brazil,BRA,0.55134903640257,#E58903
+world,South America,Colombia,COL,0.115974304068522,#E58903
+world,South America,Ecuador,ECU,0.060728051391863,#E58903
+world,South America,Peru,PER,0.12728051391863,#E58903
+world,South America,Venezuela,VEN,0.0608993576017131,#E58903
+world,South-Eastern Asia,Indonesia,IDN,0.423655805634974,#E58903
+world,South-Eastern Asia,Myanmar,MMR,0.0890839704270942,#E58903
+world,South-Eastern Asia,Philippines,PHL,0.148015668098291,#E58903
+world,South-Eastern Asia,Thailand,THA,0.0966913107548144,#E58903
+world,South-Eastern Asia,Viet Nam,VNM,0.166920664508735,#E58903
+world,Southern Asia,Bangladesh,BGD,0.217461973266054,#E58903
+world,Southern Asia,India,IND,0.703573421314379,#E58903
+world,Southern Asia,Iran,IRN,0.0187606640628159,#E58903
+world,Southern Asia,Nepal,NPL,0.0197229567453482,#E58903
+world,Southern Asia,Sri Lanka,LKA,0.0188738749666432,#E58903
+world,Western Africa,Côte d'Ivoire,CIV,0.0999767675985441,#E58903
+world,Western Africa,Guinea,GIN,0.0883605668705955,#E58903
+world,Western Africa,Mali,MLI,0.0675288468984744,#E58903
+world,Western Africa,Nigeria,NGA,0.379539998451173,#E58903
+world,Western Africa,Senegal,SEN,0.079145047626423,#E58903
+world,Other region,Others,Others,0.610312893021838,#E58903
+world,South America,Others,Others,0.0837687366167024,#E58903
+world,South-Eastern Asia,Others,Others,0.0756325805760923,#E58903
+world,Southern Asia,Others,Others,0.0216071096447604,#E58903
+world,Western Africa,Others,Others,0.28544877255479,#E58903

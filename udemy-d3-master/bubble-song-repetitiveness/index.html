@@ -1,0 +1,185 @@
+<html>
+  <head>
+    <form>
+      
+    </form>
+    <style>
+     div.tooltip {
+      opacity: 0;
+      background-color: rgba(112, 76, 76, 0.9);
+      color: #fafafa;
+      padding: 5px;
+      border-radius: 4px;
+      transition: opacity 0.2s ease;
+      max-width: 300px;
+      text-align: left;
+      font-family: "Futura", "Helvetica",sans-serif;
+      font-size: 12px;
+    }
+    label {color: #fff;}
+    body {
+      margin: 0;
+      font-family: "Futura", "Helvetica", sans-serif;
+    }
+    text {
+      text-anchor: middle;
+      fill: #fff;
+    }
+    </style>
+  </head>
+  <body style="background-color: #f5ebeb;">
+    <label>
+        <input type="radio" name='market' value="Hello" checked/>Hello 
+        <input type="radio" name='market' value="Havana"/>Havana 
+        <input type="radio" name='market' value="Shape of you"/>Shape of you 
+      </label>
+    
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://unpkg.com/jeezy@1.11.2/lib/jeezy.min.js"></script>
+    <script>
+    
+    var width = window.innerWidth, 
+        height = window.innerHeight;
+
+    var svg = d3.select("body")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height);
+
+    var pack = d3.pack()
+        .size([width, height])
+        .padding(5);
+
+    //tooltip
+    var tooltip = d3.select("body")
+      .append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+      
+    var z = d3.scaleSequential(d3.interpolatePlasma);
+    
+     //need to replace this   
+      d3.csv("output.csv", function(error, data) {
+        if (error) throw error;
+
+        // Coerce the CSV data to the appropriate types.
+        data.forEach(function(d) {
+          d.size = +d.size;
+          d.first_occur = +d.first_occur;
+        });
+     
+       		//z.domain([d3.max(data, d=>d.size), -20]);
+          z.domain([220, -20]); //using only a range on the palette
+        
+        
+         //radio button
+          d3.selectAll(("input[name='market']")).on("change", function() {
+              var data_new = data.filter(d => (d.song == this.value));
+              redraw(data_new);
+          });
+        
+redraw(data.filter(d=>d.song=="Hello"));
+        
+d3.selectAll("input")
+	.on("change", selectDataset);
+	
+function selectDataset()
+{
+	var value = this.value;
+	if (value == 'Hello')
+	{
+		redraw(data.filter(d=>d.song=="Hello"));
+	}
+	else if (value == "Havana")
+	{
+		redraw(data.filter(d=>d.song=="Havana"));
+	}
+	else if (value == "Shape of you")
+	{
+		redraw(data.filter(d=>d.song=="Shape of you"));
+	}
+}
+        
+		//redraw(data);
+    function redraw(classes){
+
+      // transition
+      var t = d3.transition()
+          .duration(750);
+      
+    
+
+      // hierarchy
+      var h = d3.hierarchy({children: classes})
+          .sum(function(d) { return d.size; })
+
+      //JOIN
+      var circle = svg.selectAll("circle")
+          .data(pack(h).leaves(), d=>d.data.name);
+
+      var text = svg.selectAll("text")
+          .data(pack(h).leaves(), d=>d.data.name);
+
+      //EXIT
+      circle.exit()
+          .style("fill", "#b26745")
+        .transition(t)
+          .attr("r", 1e-6)
+          .remove();
+
+      text.exit()
+        .transition(t)
+          .attr("opacity", 1e-6)
+          .remove();
+
+      //UPDATE
+      circle
+        .transition(t)
+          .style("fill", d=>z(d.data.first_occur))
+          .attr("r", function(d){ return d.r })
+          .attr("cx", function(d){ return d.x; })
+          .attr("cy", function(d){ return d.y; })
+
+      text
+        .transition(t)
+          .attr("x", function(d){ return d.x; })
+          .attr("y", function(d){ return d.y; });
+
+      //ENTER
+      circle.enter().append("circle")
+          .attr("r", 1e-6)
+          .attr("cx", function(d){ return d.x; })
+          .attr("cy", function(d){ return d.y; })
+          .style("fill", d=>z(d.data.first_occur))
+      		//.style("stroke",d=>d.data.phrase=='1'?"black":"white")
+        .transition(t)
+          .style("fill", 
+                 d=>z(d.data.first_occur))
+          .attr("r", function(d){ return d.r });
+
+      text.enter().append("text")
+          .attr("opacity", 1e-6)
+          .attr("x", function(d){ return d.x; })
+          .attr("y", function(d){ return d.y; })
+          .text(function(d){ return d.data.name; })
+      		.attr("font-size",'10px')
+       // .transition(t)
+          .attr("opacity", 1)
+      .on("mousemove", function(d){
+            tooltip
+              .style('position', 'absolute')
+                .style('left', `${d3.event.pageX }px`)
+                .style('top', `${d3.event.pageY + 20}px`)
+                .style('display', 'inline-block')
+                .style('opacity', '0.9')
+              .html("Word/Phrase: "+(d.data.name)+ 
+                    "<br> Number of repetition: " + (d.data.size)+ 
+                    "<br> First occurred at: " + (d.data.first_occur));
+        })
+    		.on("mouseout", function(d){tooltip.style("display", "none");});
+    }
+    })
+
+    </script>
+  </body>
+</html>

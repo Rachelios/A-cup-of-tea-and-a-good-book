@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.js'></script>
+  <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700' rel='stylesheet' type='text/css'>
+  
+  <style>
+    svg {
+      width: 600px;
+      height: 20000px;
+    }
+  </style>
+</head>
+
+<body>
+  <svg></svg>
+  
+  <script>
+    const width = 600;
+    const height = 600;
+    
+    const petalPaths = [[
+    	'M0,0',
+      "C50,50 50,100 0,100",
+      "C-50,100 -50,50 0,0"
+    ],
+    [
+			'M-35,0',
+      'C-25,25 25,25 35,0',
+      'C50,25 25,75 0,100',
+      'C-25,75 -50,25 -35,0'
+    ],
+    [
+      'M0,0',
+      'C50,40 50,70 20,100',
+      'L0,85',
+      'L-20,100',
+      'C-50,70 -50,40 0,0'
+    ],
+    [
+      'M0,0',
+      'C50,25 50,75 0,100',
+      'C-50,75 -50,25 0,0'
+    ]];
+    
+    // petal lookup for PG ratings
+    const pathLookup = {
+      G: petalPaths[0],
+      PG: petalPaths[1],
+      'PG-13': petalPaths[2],
+      R: petalPaths[3],
+    };
+    
+    // grab svg
+    const svg = d3.select('svg');
+    
+    /*****************************************************
+    ** get movie data
+    ******************************************************/
+    
+    d3.json('movies.json', function(movies) {
+      movies = _.map(movies, movie => {
+        return {
+          rating: ++movie.imdbRating,
+          votes: parseInt(movie.imdbVotes.replace(/\,/g, '')),
+          year: ++movie.Year,
+          title: movie.Title,
+          pg: movie.Rated,
+        }
+      });
+      
+      // 1. create petal data for just the first movie
+      const numPetals = 6
+      const petalData = _.times(numPetals, (i) => {
+        // 1. rotation of the petal
+        const rotate = (i / numPetals) * 360;
+        // 2. path of petal (pg)
+        // 3. size of petals (IMDB ratings)
+        return {
+          rotate,
+          path: pathLookup[movies[0].pg],
+        }
+      });
+      
+      // 2. draw the petals using d3's data-binding and enter-append
+      // (hint: use SVG transform for translation, and rotation)
+      svg.selectAll('path')
+      	.data(petalData).enter().append('path')
+      	.attr('transform', d => {
+        	return `translate(100,100)rotate(${d.rotate})`
+        })
+      	.attr('d', d => d.path)
+      	.attr('fill', '#FFC8F0')
+      	.attr('stroke', '#FFC8F0')
+        .attr('fill-opacity', 0.5)
+        .attr('stroke-width', 2);
+    });
+    
+  </script>
+</body>
