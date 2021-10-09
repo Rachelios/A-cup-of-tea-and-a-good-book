@@ -14,6 +14,8 @@ order by ipg_date DESC
 
 
 
+
+ 
 -- step 1: get list of brand with their respective market demands 
 with base_data as (
 SELECT brand_name, brand_url, category_name, category_url,  
