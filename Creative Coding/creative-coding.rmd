@@ -72,18 +72,15 @@ tibble(line = 1:N %% 5,
 seq(-2,2, by = 0.01) %>%
   expand.grid(x=., y=.) %>%
   ggplot(aes(x = x^3 - sin(y), y = y^3 - cos(x)))+
-  geom_point(alpha = 0.05, color = "black", shape = 20, size = 0)+
+  geom_point(alpha = 0.05, color = "red", shape = 20, size = 0)+
   theme_void()+
   coord_polar()+
-  labs(subtitle = "Dandelion")
+  labs(subtitle = "Dandelion", size = 5)
 ```
 ```{r}
-
-
-
-flametree_grow(seed = 4, time = 12, split = 2, angle = seq(-20,30,5), trees = 3) %>%
+flametree_grow(seed = 4, time = 12, split = 3, angle = seq(-20,30,10), trees = 5) %>%
   flametree_plot(style = "nativeflora", background = "white") +
-  annotate(geom = "text",x = 0, y = -1, label = "Made in R using `flametree` package", color = "white")
+  annotate(geom = "text",x = 0, y = -1, label = "Made in R using `flametree` package", color = "black")
 ```
 ```{r}
 shades <- c("#A06AB4", "#FFD743", "#07BB9C", "#D773A2")
@@ -94,7 +91,7 @@ flametree_grow(
   shift_x = spark_random(multiplier = 1),
   shift_y = spark_random(multiplier = 1)
 ) %>%
-  flametree_plot(palette = shades,background = "white", style = "nativeflora")
+  flametree_plot(palette = shades,background = "black", style = "nativeflora")
 ```
 ```{r}
 seq(-12,12, by = 0.04) %>%
