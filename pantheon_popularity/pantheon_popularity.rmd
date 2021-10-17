@@ -5,22 +5,23 @@ output: html_document
 
 
 ```{r setup, include=FALSE}
-install.packages("caret", repos = "http://cran.us.r-project.org")
+install.packages("threejs", repos = "http://cran.us.r-project.org")
 ```
 R.version.string
 ```{r setup, include=FALSE}
-install.packages("caret")
-install.packages("plotly")
-install.packages("tidytext")
-install.packages("threejs")
-install.packages("tweenr")
-install.packages("gganimate")
+#install.packages("caret")
+#install.packages("plotly")
+#install.packages("tidytext")
+#install.packages("threejs")
+install.packages("igraph", repos = "http://cran.us.r-project.org")
+#install.packages("gganimate", repos = "http://cran.us.r-project.org")
 ```
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, error=F, warning=F)
 library(tidyverse) # CSV file I/O, e.g. the read_csv function
 library(RColorBrewer)
-library(plotly) 
+library(plotly)
+
 #library(ggimage)
 #date
 library(lubridate)
@@ -61,6 +62,7 @@ pantheon_i30 <- pantheon_popularity_index %>%
   mutate(birth_year = (birth_year))
 ```
 print(head(pantheon_i30,5))
+
 
 ```{r input}
 
@@ -133,7 +135,7 @@ pantheon_i30_rome <- pantheon_i30 %>%
 
 
 # dev.off()  
-  ```
+```
 
 
 

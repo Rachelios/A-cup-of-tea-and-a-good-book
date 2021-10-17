@@ -1,0 +1,107 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+The [R plugin](https://www.jetbrains.com/help/pycharm/r-plugin-support.html) for IntelliJ-based IDEs provides
+handy capabilities to work with the [R Markdown](https://www.jetbrains.com/help/pycharm/r-markdown.html) files.
+To [add](https://www.jetbrains.com/help/pycharm/r-markdown.html#add-code-chunk) a new R chunk,
+position the caret at any line or the code chunk, then click "+".
+
+The code chunk appears:
+```{r}
+knitr::opts_chunk$set(echo = FALSE, error=F, warning=F)
+library(tidyverse) # CSV file I/O, e.g. the read_csv function
+library(RColorBrewer)
+library(plotly)
+library(tidyverse)
+library(scales)
+library(glue)
+library(flametree)
+```
+```{r}
+tibble(x1 = 1,
+       y1 = 5,
+       x2 = 6,
+       y2 = -2) %>%
+  ggplot()+
+  geom_segment(aes(x = x1,
+                   y = y1,
+                   xend = x2,
+                   yend = y2))+
+theme_void()
+
+```
+
+
+Type any R code in the chunk, for example:
+```{r}
+ N<- 30
+tibble(x1 = runif(N, -1, 1),
+       y1 = runif(N, -1, 1),
+       x2 = runif(N, -1, 1),
+       y2 = runif(N, -1, 1)) %>%
+  ggplot()+
+  geom_segment(aes(x = x1, y = y1, xend = x2, yend = y2))+
+  theme_void()+
+  labs(subtitle = "Lines")
+```
+
+Now, click the **Run** button on the chunk toolbar to [execute](https://www.jetbrains.com/help/pycharm/r-markdown.html#run-r-code) the chunk code. The result should be placed under the chunk.
+Click the **Knit and Open Document** to build and preview an output.
+```{r}
+N <- 30
+cols <- rainbow(N)
+cols <- c("#EF892D", "#FEC784", "#45555F", "#93ADC5", "#BF49DB")
+#set.seed(43)
+tibble(line = 1:N %% 5,
+       x1 = runif(N, -1, 1),
+       y1 = runif(N, -1, 1),
+       x2 = runif(N, -1, 1),
+       y2 = runif(N, -1, 1),
+       size = runif(N, 0, 3),
+       alpha = runif(N, 0.1, 0.9)) %>%
+  ggplot()+
+  geom_segment(aes(x = x1, y = y1, xend = x2, yend = y2, size = size, alpha = alpha, color = as.factor(line)),show.legend = FALSE)+
+  scale_color_manual(values = cols)+
+  scale_size_continuous(range = c(2,20))+
+  theme_void()+
+  labs(subtitle = "Rainbow Lines")
+```
+```{r}
+seq(-2,2, by = 0.01) %>%
+  expand.grid(x=., y=.) %>%
+  ggplot(aes(x = x^3 - sin(y), y = y^3 - cos(x)))+
+  geom_point(alpha = 0.05, color = "black", shape = 20, size = 0)+
+  theme_void()+
+  coord_polar()+
+  labs(subtitle = "Dandelion")
+```
+```{r}
+
+
+
+flametree_grow(seed = 4, time = 12, split = 2, angle = seq(-20,30,5), trees = 3) %>%
+  flametree_plot(style = "nativeflora", background = "white") +
+  annotate(geom = "text",x = 0, y = -1, label = "Made in R using `flametree` package", color = "white")
+```
+```{r}
+shades <- c("#A06AB4", "#FFD743", "#07BB9C", "#D773A2")
+
+flametree_grow(
+  trees = 10,
+  time = 7,
+  shift_x = spark_random(multiplier = 1),
+  shift_y = spark_random(multiplier = 1)
+) %>%
+  flametree_plot(palette = shades,background = "white", style = "nativeflora")
+```
+```{r}
+seq(-12,12, by = 0.04) %>%
+  expand.grid(x=., y=.) %>%
+  ggplot(aes(x = x+pi*sin(y), y = y+ pi*sin(x)))+
+  geom_point(alpha = 0.05, color = "red", shape = 20, size = 0)+
+  theme_void()+
+  coord_polar()+
+  labs(subtitle = "Rose")
+```
