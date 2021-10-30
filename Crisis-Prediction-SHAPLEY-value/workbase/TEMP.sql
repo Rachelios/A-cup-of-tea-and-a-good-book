@@ -118,7 +118,7 @@ FROM (
       when (series_url ='' AND characteristic_c3_value ='') then CONCAT('/compare/',brand_url,'-',model_url,'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c1_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c2_value,' ','-'),'+','-'),'.','')),'/')           
       when (series_url ='' AND characteristic_c3_value <>'') then CONCAT('/compare/',brand_url,'-',model_url,'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c1_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c2_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c3_value,' ','-'),'+','-'),'.','')),'/')
 end) as variant_url, count(id) as products
-      FROM "catalog-ph"."catalog_ph_20210912"
+      FROM "catalog-ph"."catalog_ph_20211102"
       WHERE comparable =TRUE
       group by 1, 2, 3, 4
      ) as A),
@@ -141,7 +141,7 @@ end) as variant_url, count(id) as products
       when (series_url ='' AND characteristic_c3_value ='') then CONCAT('/compare/',brand_url,'-',model_url,'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c1_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c2_value,' ','-'),'+','-'),'.','')),'/')           
       when (series_url ='' AND characteristic_c3_value <>'') then CONCAT('/compare/',brand_url,'-',model_url,'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c1_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c2_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c3_value,' ','-'),'+','-'),'.','')),'/')
 end) as variant_url, count(id) as products
-      FROM "catalog-my"."catalog_my_20210912"
+      FROM "catalog-my"."catalog_my_20211102"
       WHERE comparable =TRUE
       group by 1, 2, 3, 4
      ) as A),
@@ -164,7 +164,7 @@ end) as variant_url, count(id) as products
       when (series_url ='' AND characteristic_c3_value ='') then CONCAT('/compare/',brand_url,'-',model_url,'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c1_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c2_value,' ','-'),'+','-'),'.','')),'/')           
       when (series_url ='' AND characteristic_c3_value <>'') then CONCAT('/compare/',brand_url,'-',model_url,'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c1_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c2_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c3_value,' ','-'),'+','-'),'.','')),'/')
 end) as variant_url, count(id) as products
-      FROM "catalog-sg"."catalog_sg_20210912"
+      FROM "catalog-sg"."catalog_sg_20211102"
       WHERE comparable =TRUE
       group by 1, 2, 3, 4
      ) as A),
@@ -187,7 +187,7 @@ end) as variant_url, count(id) as products
       when (series_url ='' AND characteristic_c3_value ='') then CONCAT('/ราคา/',brand_url,'-',model_url,'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c1_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c2_value,' ','-'),'+','-'),'.','')),'/')           
       when (series_url ='' AND characteristic_c3_value <>'') then CONCAT('/ราคา/',brand_url,'-',model_url,'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c1_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c2_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c3_value,' ','-'),'+','-'),'.','')),'/')
 end) as variant_url, count(id) as products
-      FROM "catalog-th"."catalog_th_20210912"
+      FROM "catalog-th"."catalog_th_20211102"
       WHERE comparable =TRUE
       group by 1, 2, 3, 4
      ) as A),
@@ -210,7 +210,7 @@ end) as variant_url, count(id) as products
       when (series_url ='' AND characteristic_c3_value ='') then CONCAT('/gia-ban/',brand_url,'-',model_url,'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c1_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c2_value,' ','-'),'+','-'),'.','')),'/')           
       when (series_url ='' AND characteristic_c3_value <>'') then CONCAT('/gia-ban/',brand_url,'-',model_url,'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c1_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c2_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c3_value,' ','-'),'+','-'),'.','')),'/')
 end) as variant_url, count(id) as products
-      FROM "catalog-vn"."catalog_vn_20210912"
+      FROM "catalog-vn"."catalog_vn_20211102"
       WHERE comparable =TRUE
       group by 1, 2, 3, 4
      ) as A),
@@ -233,7 +233,7 @@ end) as variant_url, count(id) as products
       when (series_url ='' AND characteristic_c3_value ='') then CONCAT('/harga/',brand_url,'-',model_url,'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c1_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c2_value,' ','-'),'+','-'),'.','')),'/')           
       when (series_url ='' AND characteristic_c3_value <>'') then CONCAT('/harga/',brand_url,'-',model_url,'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c1_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c2_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c3_value,' ','-'),'+','-'),'.','')),'/')
 end) as variant_url, count(id) as products
-      FROM "catalog-id"."catalog_id_20210912"
+      FROM "catalog-id"."catalog_id_20211102"
       WHERE comparable =TRUE
       group by 1, 2, 3, 4
      ) as A),
@@ -256,7 +256,7 @@ end) as variant_url, count(id) as products
       when (series_url ='' AND characteristic_c3_value ='') then CONCAT('/compare/',brand_url,'-',model_url,'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c1_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c2_value,' ','-'),'+','-'),'.','')),'/')           
       when (series_url ='' AND characteristic_c3_value <>'') then CONCAT('/compare/',brand_url,'-',model_url,'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c1_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c2_value,' ','-'),'+','-'),'.','')),'-',LOWER(REPLACE(REPLACE(REPLACE(characteristic_c3_value,' ','-'),'+','-'),'.','')),'/')
 end) as variant_url, count(id) as products
-      FROM "catalog-hk"."catalog_hk_20210912"
+      FROM "catalog-hk"."catalog_hk_20211102"
       WHERE comparable =TRUE
       group by 1, 2, 3, 4
      ) as A), 
