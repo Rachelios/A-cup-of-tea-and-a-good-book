@@ -1,6 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3af49860-e2c0-4611-90a4-de716cc5e81d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/P5 js/JustLittlething_BS4.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/A-cup-of-tea-and-a-good-book.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/A-cup-of-tea-and-a-good-book.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/Catalog Script v4.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/.ipynb_checkpoints/shop last n days clicks by country url split-checkpoint.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/brand-category-gender.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/brand-category.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/brand-gender.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/brand-series-category-gender.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/brand-series-category.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/brand-series-gender.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/brand-series-model-category-gender.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/brand-series-model-category.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/brand-series-model-gender.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/brand-series-model.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/brand-series.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/brand.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/category-gender.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/category.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/pdps all.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/pdps with events.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/shop last n days clicks by country url split.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Athena Catalog/queries v3/shop last n days sessions by country url split.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/GA_getClicks_bydeviceOS.rmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Scraper QC 2021-08-19 8am to 2021-08-26 8am.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Scraper_data.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Shopee/ShopeeAMS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Shopee/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/Shopee/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/TEMP.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/V4 Weekly Scraper QC - country and strategy split v5 (1).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/all-seller-with-clicks.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/category_focus.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/clicklog-final.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crisis-Prediction-SHAPLEY-value/workbase/transaction-final.csv" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="23uUmdLaoqyCSEQaqPiz5vgYMr1" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.notebooks.jupyter.connections.configuration.JupyterServerConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/P5 js" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3af49860-e2c0-4611-90a4-de716cc5e81d" name="Changes" comment="" />
+      <created>1642583625378</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1642583625378</updated>
+      <workItem from="1642583627545" duration="3000" />
+      <workItem from="1642583825773" duration="2000" />
+      <workItem from="1643208576451" duration="1439000" />
+      <workItem from="1643210020489" duration="571000" />
+      <workItem from="1643210601095" duration="649000" />
+      <workItem from="1643211355311" duration="561000" />
+      <workItem from="1643211922212" duration="2266000" />
+      <workItem from="1643638797643" duration="649000" />
+      <workItem from="1643968938534" duration="132000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
+          <url>notebook:///Users/rachelios/PycharmProjects/A-cup-of-tea-and-a-good-book/P5 js/JustLittlething_BS4.ipynb</url>
+          <line>12</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
